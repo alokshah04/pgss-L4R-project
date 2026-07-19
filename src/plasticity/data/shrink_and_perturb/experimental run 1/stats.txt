@@ -1,3 +1,5 @@
+experimental run 1
+
 Final train loss: 0.003738
 Final val   loss: 0.005855
 Difference between train and val: -0.002117

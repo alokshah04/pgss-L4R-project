@@ -1,4 +1,13 @@
-experimental run 3
+experimental run 4
+
+Run configuration:
+Epochs:        500
+Learning rate: 5.000000e-03
+Seed:          714
+Shrink and perturb? True
+Parameter scale: 0.99999
+Noise stddev:    1e-05
+Interval:        1
 
 Final train loss: 0.003846
 Final val   loss: 0.006287
