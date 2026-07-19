@@ -1,0 +1,11 @@
+Final train loss: 0.003738
+Final val   loss: 0.005855
+Difference between train and val: -0.002117
+
+Expert  avg return: 3029.4 +/- 31.5
+Learned avg return: 2577.2 +/- 852.4
+Normalised reward gap: 14.9%
+
+Expert avg return: 11481.7 +/- 69.8
+IL     avg return: 6853.4 +/- 3835.6
+PPO    avg return: 9407.9 +/- 2768.9

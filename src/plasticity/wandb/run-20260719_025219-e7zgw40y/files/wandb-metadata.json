@@ -1,0 +1,24 @@
+{
+  "os": "Windows-11-10.0.26200-SP0",
+  "python": "CPython 3.13.13",
+  "startedAt": "2026-07-19T06:52:19.863816Z",
+  "program": "plasticity_shrink_and_perturb.ipynb",
+  "codePath": "plasticity_shrink_and_perturb.ipynb",
+  "codePathLocal": "plasticity_shrink_and_perturb.ipynb",
+  "email": "jwidmann@andrew.cmu.edu",
+  "root": "C:\\Users\\jakew\\OneDrive\\Safekeeping\\Documents\\School\\PGSS\\Robotics\\test",
+  "host": "Frodo",
+  "executable": "C:\\Users\\jakew\\miniconda3\\python.exe",
+  "cpu_count": 8,
+  "cpu_count_logical": 16,
+  "disk": {
+    "/": {
+      "total": "510907117568",
+      "used": "447706017792"
+    }
+  },
+  "memory": {
+    "total": "16474595328"
+  },
+  "writerId": "fk68sh6utsiodtxhyu7kl36hb918vp1r"
+}

@@ -1,0 +1,11 @@
+gymnasium==1.1.1
+mujoco==3.3.2
+stable_baselines3==2.6.0
+torch==2.7.0
+numpy==2.2.5
+tqdm==4.67.1
+matplotlib==3.10.1
+imageio==2.37.0
+imageio-ffmpeg==0.6.0
+
+
