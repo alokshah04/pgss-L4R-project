@@ -1,0 +1,102 @@
+_wandb:
+    value:
+        cli_version: 0.28.1
+        code_path: source-cleanRL-plasticity_shrink_and_perturb.ipynb
+        e:
+            63ejjsj9d033vimo47cvn0uz8bjxiiih:
+                codePath: plasticity_shrink_and_perturb.ipynb
+                codePathLocal: plasticity_shrink_and_perturb.ipynb
+                cpu_count: 8
+                cpu_count_logical: 16
+                disk:
+                    /:
+                        total: "510907117568"
+                        used: "447244083200"
+                email: jwidmann@andrew.cmu.edu
+                executable: C:\Users\jakew\miniconda3\python.exe
+                git:
+                    commit: c59f00158ac6b2191b9e57a1469b3e4728b34f98
+                    remote: https://github.com/alokshah04/pgss-L4R-project
+                host: Frodo
+                memory:
+                    total: "16474595328"
+                os: Windows-11-10.0.26200-SP0
+                program: plasticity_shrink_and_perturb.ipynb
+                python: CPython 3.13.13
+                root: C:\Users\jakew\Local\PGSS-L4R\pgss-L4R-project\src\plasticity
+                startedAt: "2026-07-19T21:22:54.464433Z"
+                writerId: 63ejjsj9d033vimo47cvn0uz8bjxiiih
+        m: []
+        python_version: 3.13.13
+        session_history: code\_session_history.ipynb
+        t:
+            "1":
+                - 1
+            "2":
+                - 1
+            "3":
+                - 2
+                - 13
+                - 16
+                - 35
+            "4": 3.13.13
+            "5": 0.28.1
+            "8":
+                - 1
+                - 3
+            "12": 0.28.1
+            "13": windows-amd64
+anneal_lr:
+    value: true
+batch_size:
+    value: 8192
+capture_video:
+    value: false
+clip_coef:
+    value: 0.2
+clip_vloss:
+    value: true
+cuda:
+    value: true
+ent_coef:
+    value: 0
+env_id:
+    value: HalfCheetah-v5
+exp_name:
+    value: ppo_halfcheetah
+gae_lambda:
+    value: 0.95
+gamma:
+    value: 0.99
+learning_rate:
+    value: 0.0003
+max_grad_norm:
+    value: 0.5
+minibatch_size:
+    value: 256
+norm_adv:
+    value: true
+num_envs:
+    value: 4
+num_minibatches:
+    value: 32
+num_steps:
+    value: 2048
+seed:
+    value: 714
+target_kl:
+    value: null
+torch_deterministic:
+    value: true
+total_timesteps:
+    value: 500000
+track:
+    value: true
+update_epochs:
+    value: 10
+vf_coef:
+    value: 0.5
+wandb_entity:
+    value: null
+wandb_project_name:
+    value: cleanRL

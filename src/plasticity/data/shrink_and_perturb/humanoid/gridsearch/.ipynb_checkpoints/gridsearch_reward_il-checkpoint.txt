@@ -1,0 +1,193 @@
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:07<00:00,  4.10it/s]
+
+Expert  avg return: 2669.1 +/- 266.6
+Expert  median return: 2718.7
+Model loaded: (0.99999, 0.0001, 1)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:03<00:00,  7.92it/s]
+
+Learned avg return: 1726.8 +/- 650.3
+Learned median return: 1401.0
+Normalised reward gap: 35.3%
+Model loaded: (0.99999, 0.0001, 8)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:03<00:00,  7.52it/s]
+
+Learned avg return: 1953.1 +/- 782.9
+Learned median return: 2320.2
+Normalised reward gap: 26.8%
+Model loaded: (0.99999, 0.0001, 64)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:04<00:00,  6.83it/s]
+
+Learned avg return: 2239.6 +/- 740.0
+Learned median return: 2701.0
+Normalised reward gap: 16.1%
+Model loaded: (0.99999, 1e-05, 1)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:04<00:00,  6.72it/s]
+
+Learned avg return: 2320.0 +/- 725.5
+Learned median return: 2701.4
+Normalised reward gap: 13.1%
+Model loaded: (0.99999, 1e-05, 8)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:04<00:00,  7.27it/s]
+
+Learned avg return: 2089.1 +/- 878.1
+Learned median return: 2683.5
+Normalised reward gap: 21.7%
+Model loaded: (0.99999, 1e-05, 64)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:04<00:00,  6.84it/s]
+
+Learned avg return: 2271.1 +/- 693.3
+Learned median return: 2711.0
+Normalised reward gap: 14.9%
+Model loaded: (0.99999, 1e-06, 1)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:04<00:00,  6.62it/s]
+
+Learned avg return: 2366.4 +/- 660.1
+Learned median return: 2711.1
+Normalised reward gap: 11.3%
+Model loaded: (0.99999, 1e-06, 8)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:04<00:00,  7.36it/s]
+
+Learned avg return: 2020.8 +/- 848.2
+Learned median return: 2697.5
+Normalised reward gap: 24.3%
+Model loaded: (0.99999, 1e-06, 64)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:04<00:00,  7.32it/s]
+
+Learned avg return: 2042.6 +/- 836.9
+Learned median return: 2674.0
+Normalised reward gap: 23.5%
+Model loaded: (0.999995, 0.0001, 1)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:03<00:00,  8.57it/s]
+
+Learned avg return: 1633.4 +/- 653.8
+Learned median return: 1564.7
+Normalised reward gap: 38.8%
+Model loaded: (0.999995, 0.0001, 8)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:04<00:00,  7.45it/s]
+
+Learned avg return: 1994.7 +/- 862.2
+Learned median return: 2541.2
+Normalised reward gap: 25.3%
+Model loaded: (0.999995, 0.0001, 64)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:04<00:00,  6.50it/s]
+
+Learned avg return: 2290.6 +/- 728.9
+Learned median return: 2698.7
+Normalised reward gap: 14.2%
+Model loaded: (0.999995, 1e-05, 1)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:04<00:00,  6.92it/s]
+
+Learned avg return: 2214.5 +/- 789.1
+Learned median return: 2716.9
+Normalised reward gap: 17.0%
+Model loaded: (0.999995, 1e-05, 8)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:04<00:00,  6.58it/s]
+
+Learned avg return: 2389.0 +/- 680.2
+Learned median return: 2713.7
+Normalised reward gap: 10.5%
+Model loaded: (0.999995, 1e-05, 64)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:04<00:00,  6.87it/s]
+
+Learned avg return: 2200.6 +/- 737.4
+Learned median return: 2695.0
+Normalised reward gap: 17.6%
+Model loaded: (0.999995, 1e-06, 1)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:04<00:00,  6.78it/s]
+
+Learned avg return: 2297.9 +/- 722.9
+Learned median return: 2701.9
+Normalised reward gap: 13.9%
+Model loaded: (0.999995, 1e-06, 8)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:04<00:00,  6.74it/s]
+
+Learned avg return: 2301.8 +/- 775.2
+Learned median return: 2714.7
+Normalised reward gap: 13.8%
+Model loaded: (0.999995, 1e-06, 64)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:04<00:00,  7.07it/s]
+
+Learned avg return: 2035.2 +/- 914.3
+Learned median return: 2695.6
+Normalised reward gap: 23.8%
+Model loaded: (0.999999, 0.0001, 1)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:02<00:00, 10.77it/s]
+
+Learned avg return: 1227.7 +/- 675.4
+Learned median return: 965.3
+Normalised reward gap: 54.0%
+Model loaded: (0.999999, 0.0001, 8)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:04<00:00,  6.67it/s]
+
+Learned avg return: 2296.2 +/- 726.1
+Learned median return: 2698.9
+Normalised reward gap: 14.0%
+Model loaded: (0.999999, 0.0001, 64)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:04<00:00,  6.78it/s]
+
+Learned avg return: 2272.5 +/- 747.5
+Learned median return: 2705.9
+Normalised reward gap: 14.9%
+Model loaded: (0.999999, 1e-05, 1)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:04<00:00,  6.05it/s]
+
+Learned avg return: 2420.9 +/- 650.3
+Learned median return: 2717.6
+Normalised reward gap: 9.3%
+Model loaded: (0.999999, 1e-05, 8)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:04<00:00,  6.98it/s]
+
+Learned avg return: 2250.6 +/- 838.9
+Learned median return: 2716.6
+Normalised reward gap: 15.7%
+Model loaded: (0.999999, 1e-05, 64)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:04<00:00,  6.85it/s]
+
+Learned avg return: 2257.8 +/- 727.8
+Learned median return: 2689.9
+Normalised reward gap: 15.4%
+Model loaded: (0.999999, 1e-06, 1)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:04<00:00,  6.79it/s]
+
+Learned avg return: 2276.2 +/- 779.2
+Learned median return: 2717.4
+Normalised reward gap: 14.7%
+Model loaded: (0.999999, 1e-06, 8)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:04<00:00,  6.82it/s]
+
+Learned avg return: 2274.4 +/- 728.0
+Learned median return: 2707.4
+Normalised reward gap: 14.8%
+Model loaded: (0.999999, 1e-06, 64)
+
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████| 30/30 [00:04<00:00,  7.31it/s]
+
+Learned avg return: 2076.0 +/- 855.5
+Learned median return: 2689.2
+Normalised reward gap: 22.2%
