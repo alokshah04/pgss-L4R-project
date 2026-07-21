@@ -1,0 +1,112 @@
+Training on: cpu
+Loaded IL weights into PPO actor (from in-memory model).
+[sanity] loaded-actor deterministic return/env (normalized-reward scale): 57.6
+
+PPO training: 100%|██████████████████████████████████████████████| 61/61 [09:55<00:00,  9.77s/it, steps=0.50M, ret=192]
+
+
+Training complete in 9.9 min. Saved ppo_policy_9.999900e-01_1.000000e-04_1_0.pt
+Training on: cpu
+Loaded IL weights into PPO actor (from in-memory model).
+[sanity] loaded-actor deterministic return/env (normalized-reward scale): 59.7
+
+PPO training: 100%|██████████████████████████████████████████████| 61/61 [11:53<00:00, 11.70s/it, steps=0.50M, ret=202]
+
+
+Training complete in 11.9 min. Saved ppo_policy_9.999900e-01_1.000000e-04_8_1.pt
+Training on: cpu
+Loaded IL weights into PPO actor (from in-memory model).
+[sanity] loaded-actor deterministic return/env (normalized-reward scale): 59.6
+
+PPO training: 100%|██████████████████████████████████████████████| 61/61 [09:48<00:00,  9.65s/it, steps=0.50M, ret=352]
+
+
+Training complete in 9.8 min. Saved ppo_policy_9.999900e-01_1.000000e-04_64_2.pt
+Training on: cpu
+Loaded IL weights into PPO actor (from in-memory model).
+[sanity] loaded-actor deterministic return/env (normalized-reward scale): 59.9
+
+PPO training: 100%|███████████████████████████████████████████████| 61/61 [09:48<00:00,  9.64s/it, steps=0.50M, ret=63]
+
+
+Training complete in 9.8 min. Saved ppo_policy_9.999900e-01_1.000000e-05_1_3.pt
+Training on: cpu
+Loaded IL weights into PPO actor (from in-memory model).
+[sanity] loaded-actor deterministic return/env (normalized-reward scale): 60.5
+
+PPO training: 100%|███████████████████████████████████████████████| 61/61 [09:57<00:00,  9.79s/it, steps=0.50M, ret=69]
+
+
+Training complete in 10.0 min. Saved ppo_policy_9.999900e-01_1.000000e-05_8_4.pt
+Training on: cpu
+Loaded IL weights into PPO actor (from in-memory model).
+[sanity] loaded-actor deterministic return/env (normalized-reward scale): 58.7
+
+PPO training: 100%|███████████████████████████████████████████████| 61/61 [09:42<00:00,  9.54s/it, steps=0.50M, ret=67]
+
+
+Training complete in 9.7 min. Saved ppo_policy_9.999900e-01_1.000000e-05_64_5.pt
+Training on: cpu
+Loaded IL weights into PPO actor (from in-memory model).
+[sanity] loaded-actor deterministic return/env (normalized-reward scale): 62.5
+
+PPO training: 100%|███████████████████████████████████████████████| 61/61 [09:13<00:00,  9.07s/it, steps=0.50M, ret=64]
+
+
+Training complete in 9.2 min. Saved ppo_policy_9.999900e-01_1.000000e-06_1_6.pt
+Training on: cpu
+Loaded IL weights into PPO actor (from in-memory model).
+[sanity] loaded-actor deterministic return/env (normalized-reward scale): 59.7
+
+PPO training: 100%|██████████████████████████████████████████████| 61/61 [17:01<00:00, 16.75s/it, steps=0.50M, ret=134]
+
+
+Training complete in 17.0 min. Saved ppo_policy_9.999900e-01_1.000000e-06_8_7.pt
+Training on: cpu
+Loaded IL weights into PPO actor (from in-memory model).
+[sanity] loaded-actor deterministic return/env (normalized-reward scale): 57.8
+
+PPO training: 100%|███████████████████████████████████████████████| 61/61 [09:00<00:00,  8.86s/it, steps=0.50M, ret=61]
+
+
+Training complete in 9.0 min. Saved ppo_policy_9.999900e-01_1.000000e-06_64_8.pt
+Training on: cpu
+Loaded IL weights into PPO actor (from in-memory model).
+[sanity] loaded-actor deterministic return/env (normalized-reward scale): 57.8
+
+PPO training: 100%|███████████████████████████████████████████████| 61/61 [09:35<00:00,  9.44s/it, steps=0.50M, ret=58]
+
+
+Training complete in 9.6 min. Saved ppo_policy_9.999950e-01_1.000000e-04_1_9.pt
+Training on: cpu
+Loaded IL weights into PPO actor (from in-memory model).
+[sanity] loaded-actor deterministic return/env (normalized-reward scale): 61.3
+
+PPO training: 100%|██████████████████████████████████████████████| 61/61 [11:55<00:00, 11.73s/it, steps=0.50M, ret=289]
+
+
+Training complete in 11.9 min. Saved ppo_policy_9.999950e-01_1.000000e-04_8_10.pt
+Training on: cpu
+Loaded IL weights into PPO actor (from in-memory model).
+[sanity] loaded-actor deterministic return/env (normalized-reward scale): 59.0
+
+PPO training: 100%|██████████████████████████████████████████████| 61/61 [09:30<00:00,  9.36s/it, steps=0.50M, ret=106]
+
+
+Training complete in 9.5 min. Saved ppo_policy_9.999950e-01_1.000000e-04_64_11.pt
+Training on: cpu
+Loaded IL weights into PPO actor (from in-memory model).
+[sanity] loaded-actor deterministic return/env (normalized-reward scale): 60.4
+
+PPO training: 100%|███████████████████████████████████████████████| 61/61 [09:24<00:00,  9.26s/it, steps=0.50M, ret=71]
+
+
+Training complete in 9.4 min. Saved ppo_policy_9.999950e-01_1.000000e-05_1_12.pt
+Training on: cpu
+Loaded IL weights into PPO actor (from in-memory model).
+[sanity] loaded-actor deterministic return/env (normalized-reward scale): 57.2
+
+PPO training: 100%|███████████████████████████████████████████████| 61/61 [09:32<00:00,  9.38s/it, steps=0.50M, ret=67]
+
+
+Training complete in 9.5 min. Saved ppo_policy_9.999950e-01_1.000000e-05_8_13.pt
