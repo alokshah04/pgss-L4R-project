@@ -1,0 +1,472 @@
+(base) darkdragon@MacBook-Pro-361 pgss-L4R-project % conda activate il-lab                            
+(il-lab) darkdragon@MacBook-Pro-361 pgss-L4R-project % python IL-manifold-adherence-stuffs/Scripts/train.py dagger 
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[CLI OVERRIDE] Training Mode successfully set to: DAGGER
+[START] Pipeline initialized in training mode: DAGGER
+/opt/anaconda3/envs/il-lab/lib/python3.11/site-packages/stable_baselines3/common/buffers.py:242: UserWarning: This system does not have apparently enough memory to store the complete replay buffer 5.64GB > 1.41GB
+  warnings.warn(
+Train Expert Rollouts: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 160/160 [01:36<00:00,  1.65it/s]
+Val Expert Rollouts:  57%|█████████████████████████████████████████████████████████████▌                                             | 23/40 [00:15<00:10,  1.64it/s]Val Expert Rollouts:  57%|█████████████████████████████████████████████████████████████▌                                             | 23/40 [00:15<00:11,  1.45it/s]
+Traceback (most recent call last):
+  File "/Users/darkdragon/Documents/GitHub/pgss-L4R-project/IL-manifold-adherence-stuffs/Scripts/train.py", line 300, in <module>
+    vo_raw, va_raw, vno_raw, vna_raw = utils.collect_trajectories(env, expert, config.NUM_VAL_TRAJECTORIES, desc="Val Expert Rollouts")
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/darkdragon/Documents/GitHub/pgss-L4R-project/IL-manifold-adherence-stuffs/Scripts/utils.py", line 53, in collect_trajectories
+    action, _ = expert.predict(obs, deterministic=True)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/il-lab/lib/python3.11/site-packages/stable_baselines3/common/base_class.py", line 557, in predict
+    return self.policy.predict(observation, state, episode_start, deterministic)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/il-lab/lib/python3.11/site-packages/stable_baselines3/common/policies.py", line 352, in predict
+    self.set_training_mode(False)
+  File "/opt/anaconda3/envs/il-lab/lib/python3.11/site-packages/sb3_contrib/tqc/policies.py", line 426, in set_training_mode
+    self.actor.set_training_mode(mode)
+  File "/opt/anaconda3/envs/il-lab/lib/python3.11/site-packages/stable_baselines3/common/policies.py", line 211, in set_training_mode
+    self.train(mode)
+  File "/opt/anaconda3/envs/il-lab/lib/python3.11/site-packages/torch/nn/modules/module.py", line 2904, in train
+    module.train(mode)
+  File "/opt/anaconda3/envs/il-lab/lib/python3.11/site-packages/torch/nn/modules/module.py", line 2904, in train
+    module.train(mode)
+  File "/opt/anaconda3/envs/il-lab/lib/python3.11/site-packages/torch/nn/modules/module.py", line 2902, in train
+    self.training = mode
+    ^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/il-lab/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1981, in __setattr__
+    if isinstance(value, Parameter):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/il-lab/lib/python3.11/site-packages/torch/nn/parameter.py", line 27, in __instancecheck__
+    return super().__instancecheck__(instance)
+           ^^^^^^^
+KeyboardInterrupt
+
+(il-lab) darkdragon@MacBook-Pro-361 pgss-L4R-project % python IL-manifold-adherence-stuffs/Scripts/train.py dagger
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[CLI OVERRIDE] Training Mode successfully set to: DAGGER
+[START] Pipeline initialized in training mode: DAGGER
+/opt/anaconda3/envs/il-lab/lib/python3.11/site-packages/stable_baselines3/common/buffers.py:242: UserWarning: This system does not have apparently enough memory to store the complete replay buffer 5.64GB > 1.28GB
+  warnings.warn(
+Train Expert Rollouts:  21%|█████████████████████▍                                                                                  |Train Expert Rollouts:  21%|██████████████████████                                                                                  |Train Expert Rollouts:  22%|██████████████████████▊                                                                                 |Train Expert Rollouts:  22%|███████████████████████▍                                                                                |Train Expert Rollouts:  23%|████████████████████████                                                                                |Train Expert Rollouts:  24%|████████████████████████▋                                                                               |Train Expert Rollouts:  24%|█████████████████████████▎                                                                              |Train Expert Rollouts:  25%|██████████████████████████                                                                              |Train Expert Rollouts:  26%|██████████████████████████▋                                                                             |Train Expert Rollouts:  26%|███████████████████████████▎                                                                            |Train Expert Rollouts:  27%|███████████████████████████▉                                                                            |Train Expert Rollouts:  28%|████████████████████████████▌                                                                           |Train Expert Rollouts:  28%|█████████████████████████████▎                                                                          |Train Expert Rollouts:  29%|█████████████████████████████▉                                                                          |Train Expert Rollouts:  29%|██████████████████████████████▌                                                                         |Train Expert Rollouts:  30%|███████████████████████████████▏                                                                        |Train Expert Rollouts:  31%|███████████████████████████████▊                                                                        |Train Expert Rollouts:  31%|████████████████████████████████▌                                                                       |Train Expert Rollouts:  32%|█████████████████████████████████▏                                                                      |Train Expert Rollouts:  32%|█████████████████████████████████▊                                                                      |Train Expert Rollouts:  33%|██████████████████████████████████▍                                                                     |Train Expert Rollouts:  34%|███████████████████████████████████                                                                     |Train Expert Rollouts:  34%|███████████████████████████████████▊                                                                    |Train Expert Rollouts:  35%|████████████████████████████████████▍                                                                   |Train Expert Rollouts:  36%|█████████████████████████████████████                                                                   |Train Expert Rollouts:  36%|█████████████████████████████████████▋                                                                  |Train Expert Rollouts:  37%|██████████████████████████████████████▎                                                                 |Train Expert Rollouts:  38%|███████████████████████████████████████                                                                 |Train Expert Rollouts:  38%|███████████████████████████████████████▋                                                                |Train Expert Rollouts:  39%|████████████████████████████████████████▎                                                               |Train Expert Rollouts:  39%|████████████████████████████████████████▉                                                               |Train Expert Rollouts:  40%|█████████████████████████████████████████▌                                                              |Train Expert Rollouts:  41%|██████████████████████████████████████████▎                                                             |Train Expert Rollouts:  41%|██████████████████████████████████████████▉                                                             |Train Expert Rollouts:  42%|███████████████████████████████████████████▌                                                            |Train Expert Rollouts:  42%|████████████████████████████████████████████▏                                                           |Train Expert Rollouts:  43%|████████████████████████████████████████████▊                                                           |Train Expert Rollouts:  44%|█████████████████████████████████████████████▌                                                          |Train Expert Rollouts:  44%|██████████████████████████████████████████████▏                                                         |Train Expert Rollouts:  45%|██████████████████████████████████████████████▊                                                         |Train Expert Rollouts:  46%|███████████████████████████████████████████████▍                                                        |Train Expert Rollouts:  46%|████████████████████████████████████████████████                                                        |Train Expert Rollouts:  47%|████████████████████████████████████████████████▊                                                       |Train Expert Rollouts:  48%|█████████████████████████████████████████████████▍                                                      |Train Expert Rollouts:  48%|██████████████████████████████████████████████████                                                      |Train Expert Rollouts:  49%|██████████████████████████████████████████████████▋                                                     |Train Expert Rollouts:  49%|███████████████████████████████████████████████████▎                                                    |Train Expert Rollouts:  50%|████████████████████████████████████████████████████                                                    |Train Expert Rollouts:  51%|████████████████████████████████████████████████████▋                                                   |Train Expert Rollouts:  51%|█████████████████████████████████████████████████████▎                                                  |Train Expert Rollouts:  52%|█████████████████████████████████████████████████████▉                                                  |Train Expert Rollouts:  52%|██████████████████████████████████████████████████████▌                                                 |Train Expert Rollouts:  53%|███████████████████████████████████████████████████████▎                                                |Train Expert Rollouts:  54%|███████████████████████████████████████████████████████▉                                                |Train Expert Rollouts:  54%|████████████████████████████████████████████████████████▌                                               |Train Expert Rollouts:  55%|█████████████████████████████████████████████████████████▏                                              |Train Expert Rollouts:  56%|█████████████████████████████████████████████████████████▊                                              |Train Expert Rollouts:  56%|██████████████████████████████████████████████████████████▌                                             |Train Expert Rollouts:  57%|███████████████████████████████████████████████████████████▏                                            |Train Expert Rollouts:  57%|███████████████████████████████████████████████████████████▊                                            |Train Expert Rollouts:  58%|████████████████████████████████████████████████████████████▍                                           |Train Expert Rollouts:  59%|█████████████████████████████████████████████████████████████                                           |Train Expert Rollouts:  59%|█████████████████████████████████████████████████████████████▊                                          |Train Expert Rollouts:  60%|██████████████████████████████████████████████████████████████▍                                         |Train Expert Rollouts:  61%|███████████████████████████████████████████████████████████████                                         |Train Expert Rollouts:  61%|███████████████████████████████████████████████████████████████▋                                        |Train Expert Rollouts:  62%|████████████████████████████████████████████████████████████████▎                                       |Train Expert Rollouts:  62%|████████████████████████████████████████████████████████████████▍                                      | Train Expert Rollouts:  63%|█████████████████████████████████████████████████████████████████                                      | Train Expert Rollouts:  64%|█████████████████████████████████████████████████████████████████▋                                     | Train Expert Rollouts:  64%|██████████████████████████████████████████████████████████████████▎                                    | Train Expert Rollouts:  65%|██████████████████████████████████████████████████████████████████▉                                    | Train Expert Rollouts:  66%|███████████████████████████████████████████████████████████████████▌                                   | Train Expert Rollouts:  66%|████████████████████████████████████████████████████████████████████▏                                  | Train Expert Rollouts:  67%|████████████████████████████████████████████████████████████████████▉                                  | Train Expert Rollouts:  68%|█████████████████████████████████████████████████████████████████████▌                                 | Train Expert Rollouts:  68%|██████████████████████████████████████████████████████████████████████▏                                | Train Expert Rollouts:  69%|██████████████████████████████████████████████████████████████████████▊                                | Train Expert Rollouts:  69%|███████████████████████████████████████████████████████████████████████▍                               | Train Expert Rollouts:  70%|████████████████████████████████████████████████████████████████████████                               | Train Expert Rollouts:  71%|████████████████████████████████████████████████████████████████████████▋                              | Train Expert Rollouts:  71%|█████████████████████████████████████████████████████████████████████████▍                             | Train Expert Rollouts:  72%|██████████████████████████████████████████████████████████████████████████                             | Train Expert Rollouts:  72%|██████████████████████████████████████████████████████████████████████████▋                            | Train Expert Rollouts:  73%|███████████████████████████████████████████████████████████████████████████▎                           | Train Expert Rollouts:  74%|███████████████████████████████████████████████████████████████████████████▉                           | Train Expert Rollouts:  74%|████████████████████████████████████████████████████████████████████████████▌                          | Train Expert Rollouts:  75%|█████████████████████████████████████████████████████████████████████████████▎                         | Train Expert Rollouts:  76%|█████████████████████████████████████████████████████████████████████████████▉                         | Train Expert Rollouts:  76%|██████████████████████████████████████████████████████████████████████████████▌                        | Train Expert Rollouts:  77%|███████████████████████████████████████████████████████████████████████████████▏                       | Train Expert Rollouts:  78%|███████████████████████████████████████████████████████████████████████████████▊                       | Train Expert Rollouts:  78%|████████████████████████████████████████████████████████████████████████████████▍                      | Train Expert Rollouts:  79%|█████████████████████████████████████████████████████████████████████████████████                      | Train Expert Rollouts:  79%|█████████████████████████████████████████████████████████████████████████████████▊                     | Train Expert Rollouts:  80%|██████████████████████████████████████████████████████████████████████████████████▍                    | Train Expert Rollouts:  81%|███████████████████████████████████████████████████████████████████████████████████                    | Train Expert Rollouts:  81%|███████████████████████████████████████████████████████████████████████████████████▋                   | Train Expert Rollouts:  82%|████████████████████████████████████████████████████████████████████████████████████▎                  | Train Expert Rollouts:  82%|████████████████████████████████████████████████████████████████████████████████████▉                  | Train Expert Rollouts:  83%|█████████████████████████████████████████████████████████████████████████████████████▌                 | Train Expert Rollouts:  84%|██████████████████████████████████████████████████████████████████████████████████████▎                | Train Expert Rollouts:  84%|██████████████████████████████████████████████████████████████████████████████████████▉                | Train Expert Rollouts:  85%|███████████████████████████████████████████████████████████████████████████████████████▌               | Train Expert Rollouts:  86%|████████████████████████████████████████████████████████████████████████████████████████▏              | Train Expert Rollouts:  86%|████████████████████████████████████████████████████████████████████████████████████████▊              | Train Expert Rollouts:  87%|█████████████████████████████████████████████████████████████████████████████████████████▍             | Train Expert Rollouts:  88%|██████████████████████████████████████████████████████████████████████████████████████████▏            | Train Expert Rollouts:  88%|██████████████████████████████████████████████████████████████████████████████████████████▊            | Train Expert Rollouts:  89%|███████████████████████████████████████████████████████████████████████████████████████████▍           | Train Expert Rollouts:  89%|████████████████████████████████████████████████████████████████████████████████████████████           | Train Expert Rollouts:  90%|████████████████████████████████████████████████████████████████████████████████████████████▋          | Train Expert Rollouts:  91%|█████████████████████████████████████████████████████████████████████████████████████████████▎         | Train Expert Rollouts:  91%|█████████████████████████████████████████████████████████████████████████████████████████████▉         | Train Expert Rollouts:  92%|██████████████████████████████████████████████████████████████████████████████████████████████▋        | Train Expert Rollouts:  92%|███████████████████████████████████████████████████████████████████████████████████████████████▎       | Train Expert Rollouts:  93%|███████████████████████████████████████████████████████████████████████████████████████████████▉       | Train Expert Rollouts:  94%|████████████████████████████████████████████████████████████████████████████████████████████████▌      | Train Expert Rollouts:  94%|█████████████████████████████████████████████████████████████████████████████████████████████████▏     | Train Expert Rollouts:  95%|█████████████████████████████████████████████████████████████████████████████████████████████████▊     | Train Expert Rollouts:  96%|██████████████████████████████████████████████████████████████████████████████████████████████████▍    | Train Expert Rollouts:  96%|███████████████████████████████████████████████████████████████████████████████████████████████████▏   | Train Expert Rollouts:  97%|███████████████████████████████████████████████████████████████████████████████████████████████████▊   | Train Expert Rollouts:  98%|████████████████████████████████████████████████████████████████████████████████████████████████████▍  | Train Expert Rollouts:  98%|█████████████████████████████████████████████████████████████████████████████████████████████████████  | Train Expert Rollouts:  99%|█████████████████████████████████████████████████████████████████████████████████████████████████████▋ | Train Expert Rollouts:  99%|██████████████████████████████████████████████████████████████████████████████████████████████████████▎| Train Expert Rollouts: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| Train Expert Rollouts: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 160/160 [01:45<00:00,  1.52it/s]
+Val Expert Rollouts: 100%|███████████████████████████████████████████████████████████████████████████| 40/40 [00:24<00:00,  1.65it/s]
+
+[INFO] Spawning k-NN Manifold Reference Engine...
+
+[INFO] Found cached Energy-Based Manifold Critic (energy_critic_expert_cache.pt). Loading weights instantly...
+
+==========================================
+  LAUNCHING: DAgger Phase 1/10
+==========================================
+
+-> [ARCHITECTURAL CHECK] Initializing Gradient Descent Engine:
+   |-- Sub-Loss: Behavioral Cloning (MSE) -> [ACTIVE]
+   |-- Sub-Loss: Multi-Step Lookahead      -> [DISABLED]
+   |-- Sub-Loss: Lyapunov Safety Metric    -> [DISABLED]
+   +-------------------------------------------------------------
+Epoch 01 / 25 | Reward: 573.8 ± 150.1 | Energy: 1.428 ± 1.033 | k-NN Dist: 17.425 ± 13.620
+  --> Checkpoint Saved (New Best Composite Score!)
+Epoch 02 / 25 | Reward: 5747.1 ± 3323.2 | Energy: 0.530 ± 0.592 | k-NN Dist: 5.717 ± 4.991
+  --> Checkpoint Saved (New Best Composite Score!)
+Epoch 03 / 25 | Reward: 2242.9 ± 2308.8 | Energy: 0.570 ± 0.633 | k-NN Dist: 12.012 ± 12.312
+Epoch 04 / 25 | Reward: 3209.5 ± 3501.7 | Energy: 0.325 ± 0.453 | k-NN Dist: 7.486 ± 9.104
+Epoch 05 / 25 | Reward: 4336.8 ± 2905.1 | Energy: 0.290 ± 0.405 | k-NN Dist: 7.795 ± 10.074
+Epoch 06 / 25 | Reward: 5531.2 ± 3251.2 | Energy: 0.262 ± 0.433 | k-NN Dist: 7.101 ± 9.260
+Epoch 07 / 25 | Reward: 8257.5 ± 13.0 | Energy: 0.186 ± 0.301 | k-NN Dist: 5.370 ± 2.518
+  --> Checkpoint Saved (New Best Composite Score!)
+Epoch 08 / 25 | Reward: 8225.6 ± 19.6 | Energy: 0.350 ± 0.427 | k-NN Dist: 5.476 ± 2.665
+Epoch 09 / 25 | Reward: 8191.9 ± 12.7 | Energy: 0.217 ± 0.314 | k-NN Dist: 4.890 ± 1.880
+Epoch 10 / 25 | Reward: 8206.9 ± 50.6 | Energy: 0.170 ± 0.276 | k-NN Dist: 5.411 ± 2.578
+Epoch 11 / 25 | Reward: 8204.3 ± 23.4 | Energy: 0.142 ± 0.269 | k-NN Dist: 4.825 ± 1.716
+  --> Checkpoint Saved (New Best Composite Score!)
+Epoch 12 / 25 | Reward: 8190.5 ± 58.0 | Energy: 0.457 ± 0.474 | k-NN Dist: 5.359 ± 2.167
+Epoch 13 / 25 | Reward: 8225.4 ± 9.6 | Energy: 0.155 ± 0.253 | k-NN Dist: 5.618 ± 2.737
+Epoch 14 / 25 | Reward: 8152.9 ± 30.2 | Energy: 0.108 ± 0.224 | k-NN Dist: 5.790 ± 2.790
+Epoch 15 / 25 | Reward: 7956.5 ± 393.4 | Energy: 0.127 ± 0.246 | k-NN Dist: 5.739 ± 4.944
+Epoch 16 / 25 | Reward: 6752.0 ± 2010.1 | Energy: 0.120 ± 0.245 | k-NN Dist: 5.411 ± 3.949
+Epoch 17 / 25 | Reward: 7244.7 ± 1262.7 | Energy: 0.106 ± 0.221 | k-NN Dist: 5.142 ± 6.053
+Epoch 18 / 25 | Reward: 6446.3 ± 2409.8 | Energy: 0.074 ± 0.205 | k-NN Dist: 47983762.206 ± 1821062374.259
+Epoch 19 / 25 | Reward: 7841.9 ± 544.0 | Energy: 0.115 ± 0.225 | k-NN Dist: 6.235 ± 6.207
+Epoch 20 / 25 | Reward: 8183.2 ± 23.6 | Energy: 0.144 ± 0.276 | k-NN Dist: 4.452 ± 1.667
+  --> Checkpoint Saved (New Best Composite Score!)
+Epoch 21 / 25 | Reward: 6194.8 ± 2815.7 | Energy: 0.144 ± 0.285 | k-NN Dist: 5.332 ± 4.191
+Epoch 22 / 25 | Reward: 7271.2 ± 1219.6 | Energy: 0.081 ± 0.202 | k-NN Dist: 5.153 ± 4.015
+Epoch 23 / 25 | Reward: 7339.3 ± 1196.3 | Energy: 0.117 ± 0.207 | k-NN Dist: 6.060 ± 6.739
+Epoch 24 / 25 | Reward: 8165.3 ± 56.2 | Energy: 0.078 ± 0.203 | k-NN Dist: 4.553 ± 1.707
+  --> Checkpoint Saved (New Best Composite Score!)
+Epoch 25 / 25 | Reward: 8235.6 ± 30.9 | Energy: 0.098 ± 0.221 | k-NN Dist: 5.182 ± 2.070
+--> Phase Complete | Final Train Loss: 0.000567 | Final Validation Loss: 0.000990
+
+[DAgger] Phase Complete. Aggregating environment rollout data...
+[DAgger] Manifold Re-Mapped. New dataset size: 163039 steps.
+
+==========================================
+  LAUNCHING: DAgger Phase 2/10
+==========================================
+
+-> [ARCHITECTURAL CHECK] Initializing Gradient Descent Engine:
+   |-- Sub-Loss: Behavioral Cloning (MSE) -> [ACTIVE]
+   |-- Sub-Loss: Multi-Step Lookahead      -> [DISABLED]
+   |-- Sub-Loss: Lyapunov Safety Metric    -> [DISABLED]
+   +-------------------------------------------------------------
+Epoch 01 / 25 | Reward: 5648.0 ± 3532.6 | Energy: 0.128 ± 0.220 | k-NN Dist: 6.645 ± 6.425
+Epoch 02 / 25 | Reward: 8213.4 ± 27.7 | Energy: 0.115 ± 0.216 | k-NN Dist: 5.349 ± 3.478
+Epoch 03 / 25 | Reward: 8169.9 ± 45.9 | Energy: 0.076 ± 0.195 | k-NN Dist: 5.022 ± 3.262
+Epoch 04 / 25 | Reward: 6795.7 ± 1001.3 | Energy: 0.062 ± 0.180 | k-NN Dist: 7.425 ± 7.957
+Epoch 05 / 25 | Reward: 3134.1 ± 3575.2 | Energy: 0.212 ± 0.329 | k-NN Dist: 6.165 ± 5.267
+Epoch 06 / 25 | Reward: 8182.4 ± 37.6 | Energy: 0.125 ± 0.239 | k-NN Dist: 4.728 ± 1.827
+Epoch 07 / 25 | Reward: 8187.1 ± 21.8 | Energy: 0.084 ± 0.198 | k-NN Dist: 4.966 ± 2.055
+Epoch 08 / 25 | Reward: 5617.7 ± 3586.5 | Energy: 0.078 ± 0.196 | k-NN Dist: 5.271 ± 3.748
+Epoch 09 / 25 | Reward: 8173.7 ± 21.4 | Energy: 0.072 ± 0.192 | k-NN Dist: 4.892 ± 1.895
+Epoch 10 / 25 | Reward: 5602.5 ± 3645.5 | Energy: 0.082 ± 0.190 | k-NN Dist: 4.956 ± 2.986
+Epoch 11 / 25 | Reward: 8211.0 ± 50.5 | Energy: 0.087 ± 0.188 | k-NN Dist: 4.896 ± 1.670
+  --> Checkpoint Saved (New Best Composite Score!)
+Epoch 12 / 25 | Reward: 8214.4 ± 10.3 | Energy: 0.093 ± 0.191 | k-NN Dist: 4.678 ± 1.557
+  --> Checkpoint Saved (New Best Composite Score!)
+Epoch 13 / 25 | Reward: 8217.8 ± 13.0 | Energy: 0.063 ± 0.181 | k-NN Dist: 4.809 ± 1.424
+  --> Checkpoint Saved (New Best Composite Score!)
+Epoch 14 / 25 | Reward: 8203.4 ± 28.8 | Energy: 0.054 ± 0.178 | k-NN Dist: 5.314 ± 2.474
+Epoch 15 / 25 | Reward: 7422.6 ± 1122.0 | Energy: 0.081 ± 0.202 | k-NN Dist: 5.389 ± 5.006
+Epoch 16 / 25 | Reward: 6610.9 ± 2263.1 | Energy: 0.071 ± 0.187 | k-NN Dist: 7.626 ± 6.065
+Epoch 17 / 25 | Reward: 8195.6 ± 24.5 | Energy: 0.081 ± 0.187 | k-NN Dist: 4.726 ± 1.821
+Epoch 18 / 25 | Reward: 8209.4 ± 72.0 | Energy: 0.137 ± 0.226 | k-NN Dist: 4.777 ± 1.888
+Epoch 19 / 25 | Reward: 8195.4 ± 13.3 | Energy: 0.052 ± 0.176 | k-NN Dist: 5.403 ± 2.933
+Epoch 20 / 25 | Reward: 8183.1 ± 31.5 | Energy: 0.057 ± 0.180 | k-NN Dist: 4.917 ± 2.046
+Epoch 21 / 25 | Reward: 6524.3 ± 2332.0 | Energy: 0.091 ± 0.199 | k-NN Dist: 5.416 ± 5.316
+Epoch 22 / 25 | Reward: 8196.1 ± 26.9 | Energy: 0.056 ± 0.182 | k-NN Dist: 5.709 ± 2.911
+Epoch 23 / 25 | Reward: 8225.4 ± 11.1 | Energy: 0.107 ± 0.215 | k-NN Dist: 4.799 ± 1.831
+Epoch 24 / 25 | Reward: 8180.2 ± 18.8 | Energy: 0.071 ± 0.193 | k-NN Dist: 5.363 ± 2.607
+Epoch 25 / 25 | Reward: 8198.0 ± 30.0 | Energy: 0.062 ± 0.180 | k-NN Dist: 4.558 ± 1.726
+  --> Checkpoint Saved (New Best Composite Score!)
+--> Phase Complete | Final Train Loss: 0.000405 | Final Validation Loss: 0.000885
+
+[DAgger] Phase Complete. Aggregating environment rollout data...
+[DAgger] Manifold Re-Mapped. New dataset size: 168039 steps.
+
+==========================================
+  LAUNCHING: DAgger Phase 3/10
+==========================================
+
+-> [ARCHITECTURAL CHECK] Initializing Gradient Descent Engine:
+   |-- Sub-Loss: Behavioral Cloning (MSE) -> [ACTIVE]
+   |-- Sub-Loss: Multi-Step Lookahead      -> [DISABLED]
+   |-- Sub-Loss: Lyapunov Safety Metric    -> [DISABLED]
+   +-------------------------------------------------------------
+Epoch 01 / 25 | Reward: 8200.2 ± 58.8 | Energy: 0.076 ± 0.191 | k-NN Dist: 4.576 ± 1.549
+Epoch 02 / 25 | Reward: 8212.6 ± 43.6 | Energy: 0.089 ± 0.199 | k-NN Dist: 5.063 ± 1.787
+Epoch 03 / 25 | Reward: 7619.4 ± 834.0 | Energy: 0.095 ± 0.208 | k-NN Dist: 5.428 ± 6.515
+Epoch 04 / 25 | Reward: 7423.9 ± 989.9 | Energy: 0.053 ± 0.175 | k-NN Dist: 5.656 ± 8.469
+Epoch 05 / 25 | Reward: 8194.9 ± 39.7 | Energy: 0.107 ± 0.206 | k-NN Dist: 4.625 ± 1.954
+Epoch 06 / 25 | Reward: 6820.6 ± 1988.6 | Energy: 0.229 ± 0.331 | k-NN Dist: 5.720 ± 3.772
+Epoch 07 / 25 | Reward: 8147.2 ± 27.2 | Energy: 0.097 ± 0.209 | k-NN Dist: 4.674 ± 2.257
+Epoch 08 / 25 | Reward: 8165.2 ± 40.7 | Energy: 0.056 ± 0.178 | k-NN Dist: 5.047 ± 2.454
+Epoch 09 / 25 | Reward: 5592.1 ± 2175.6 | Energy: 0.066 ± 0.183 | k-NN Dist: 7.066 ± 7.981
+Epoch 10 / 25 | Reward: 8184.8 ± 10.5 | Energy: 0.084 ± 0.202 | k-NN Dist: 4.769 ± 3.949
+Epoch 11 / 25 | Reward: 6827.9 ± 1896.4 | Energy: 0.118 ± 0.213 | k-NN Dist: 6.149 ± 5.769
+Epoch 12 / 25 | Reward: 3154.8 ± 3576.5 | Energy: 0.056 ± 0.183 | k-NN Dist: 6.358 ± 5.896
+Epoch 13 / 25 | Reward: 8211.1 ± 15.7 | Energy: 0.085 ± 0.196 | k-NN Dist: 4.895 ± 2.093
+Epoch 14 / 25 | Reward: 8177.9 ± 48.9 | Energy: 0.068 ± 0.181 | k-NN Dist: 4.986 ± 2.544
+Epoch 15 / 25 | Reward: 8197.3 ± 21.0 | Energy: 0.078 ± 0.197 | k-NN Dist: 5.191 ± 4.908
+Epoch 16 / 25 | Reward: 5862.6 ± 3328.9 | Energy: 0.054 ± 0.180 | k-NN Dist: 5.029 ± 3.554
+Epoch 17 / 25 | Reward: 5649.9 ± 3552.5 | Energy: 0.136 ± 0.298 | k-NN Dist: 5.420 ± 4.579
+Epoch 18 / 25 | Reward: 8205.2 ± 31.2 | Energy: 0.062 ± 0.179 | k-NN Dist: 5.248 ± 2.433
+Epoch 19 / 25 | Reward: 8189.0 ± 21.7 | Energy: 0.083 ± 0.191 | k-NN Dist: 5.667 ± 5.327
+Epoch 20 / 25 | Reward: 8193.5 ± 3.0 | Energy: 0.060 ± 0.187 | k-NN Dist: 5.069 ± 2.326
+Epoch 21 / 25 | Reward: 6816.3 ± 1874.7 | Energy: 0.094 ± 0.211 | k-NN Dist: 5.499 ± 4.203
+Epoch 22 / 25 | Reward: 8179.9 ± 46.1 | Energy: 0.107 ± 0.205 | k-NN Dist: 4.638 ± 2.069
+Epoch 23 / 25 | Reward: 8199.4 ± 13.5 | Energy: 0.075 ± 0.178 | k-NN Dist: 5.403 ± 7.974
+Epoch 24 / 25 | Reward: 8143.0 ± 41.4 | Energy: 0.061 ± 0.189 | k-NN Dist: 5.056 ± 5.878
+Epoch 25 / 25 | Reward: 8216.9 ± 18.3 | Energy: 0.048 ± 0.169 | k-NN Dist: 5.008 ± 1.975
+--> Phase Complete | Final Train Loss: 0.000336 | Final Validation Loss: 0.000844
+
+[DAgger] Phase Complete. Aggregating environment rollout data...
+[DAgger] Manifold Re-Mapped. New dataset size: 173039 steps.
+
+==========================================
+  LAUNCHING: DAgger Phase 4/10
+==========================================
+
+-> [ARCHITECTURAL CHECK] Initializing Gradient Descent Engine:
+   |-- Sub-Loss: Behavioral Cloning (MSE) -> [ACTIVE]
+   |-- Sub-Loss: Multi-Step Lookahead      -> [DISABLED]
+   |-- Sub-Loss: Lyapunov Safety Metric    -> [DISABLED]
+   +-------------------------------------------------------------
+Epoch 01 / 25 | Reward: 8197.1 ± 30.9 | Energy: 0.082 ± 0.195 | k-NN Dist: 5.019 ± 2.326
+Epoch 02 / 25 | Reward: 8151.9 ± 12.2 | Energy: 0.081 ± 0.185 | k-NN Dist: 5.018 ± 2.502
+Epoch 03 / 25 | Reward: 8148.5 ± 4.3 | Energy: 0.071 ± 0.201 | k-NN Dist: 4.411 ± 1.916
+Epoch 04 / 25 | Reward: 8232.5 ± 41.9 | Energy: 0.071 ± 0.191 | k-NN Dist: 5.213 ± 2.385
+Epoch 05 / 25 | Reward: 8138.1 ± 35.6 | Energy: 0.054 ± 0.166 | k-NN Dist: 5.308 ± 8.710
+Epoch 06 / 25 | Reward: 8154.7 ± 27.4 | Energy: 0.078 ± 0.195 | k-NN Dist: 4.561 ± 1.671
+Epoch 07 / 25 | Reward: 8183.4 ± 26.5 | Energy: 0.081 ± 0.199 | k-NN Dist: 5.150 ± 2.417
+Epoch 08 / 25 | Reward: 8221.8 ± 54.4 | Energy: 0.133 ± 0.235 | k-NN Dist: 5.693 ± 3.484
+Epoch 09 / 25 | Reward: 8195.5 ± 25.0 | Energy: 0.070 ± 0.177 | k-NN Dist: 4.912 ± 1.712
+Epoch 10 / 25 | Reward: 8158.2 ± 32.2 | Energy: 0.051 ± 0.185 | k-NN Dist: 4.572 ± 2.048
+Epoch 11 / 25 | Reward: 3781.3 ± 3160.3 | Energy: 0.070 ± 0.187 | k-NN Dist: 7.745 ± 11.919
+Epoch 12 / 25 | Reward: 7354.5 ± 1101.9 | Energy: 0.131 ± 0.214 | k-NN Dist: 5.503 ± 5.845
+Epoch 13 / 25 | Reward: 8150.2 ± 18.5 | Energy: 0.144 ± 0.230 | k-NN Dist: 5.027 ± 2.532
+Epoch 14 / 25 | Reward: 8190.8 ± 31.5 | Energy: 0.074 ± 0.183 | k-NN Dist: 5.389 ± 8.045
+Epoch 15 / 25 | Reward: 8154.2 ± 34.5 | Energy: 0.050 ± 0.171 | k-NN Dist: 4.594 ± 1.565
+Epoch 16 / 25 | Reward: 8182.5 ± 9.3 | Energy: 0.064 ± 0.192 | k-NN Dist: 5.212 ± 2.799
+Epoch 17 / 25 | Reward: 5748.3 ± 3462.2 | Energy: 0.134 ± 0.241 | k-NN Dist: 5.776 ± 3.528
+Epoch 18 / 25 | Reward: 8190.6 ± 30.4 | Energy: 0.053 ± 0.177 | k-NN Dist: 4.821 ± 2.248
+Epoch 19 / 25 | Reward: 8182.4 ± 26.1 | Energy: 0.064 ± 0.170 | k-NN Dist: 5.449 ± 3.391
+Epoch 20 / 25 | Reward: 8162.2 ± 19.4 | Energy: 0.109 ± 0.206 | k-NN Dist: 4.944 ± 2.400
+Epoch 21 / 25 | Reward: 8184.9 ± 16.9 | Energy: 0.118 ± 0.244 | k-NN Dist: 4.356 ± 1.507
+Epoch 22 / 25 | Reward: 7747.3 ± 688.4 | Energy: 0.099 ± 0.198 | k-NN Dist: 5.280 ± 3.408
+Epoch 23 / 25 | Reward: 7046.5 ± 1613.1 | Energy: 0.049 ± 0.167 | k-NN Dist: 5.917 ± 5.839
+Epoch 24 / 25 | Reward: 8188.9 ± 13.2 | Energy: 0.044 ± 0.168 | k-NN Dist: 4.511 ± 1.901
+  --> Checkpoint Saved (New Best Composite Score!)
+Epoch 25 / 25 | Reward: 6349.1 ± 2581.1 | Energy: 0.042 ± 0.166 | k-NN Dist: 6.671 ± 5.807
+--> Phase Complete | Final Train Loss: 0.000332 | Final Validation Loss: 0.000852
+
+[DAgger] Phase Complete. Aggregating environment rollout data...
+[DAgger] Manifold Re-Mapped. New dataset size: 178039 steps.
+
+==========================================
+  LAUNCHING: DAgger Phase 5/10
+==========================================
+
+-> [ARCHITECTURAL CHECK] Initializing Gradient Descent Engine:
+   |-- Sub-Loss: Behavioral Cloning (MSE) -> [ACTIVE]
+   |-- Sub-Loss: Multi-Step Lookahead      -> [DISABLED]
+   |-- Sub-Loss: Lyapunov Safety Metric    -> [DISABLED]
+   +-------------------------------------------------------------
+Epoch 01 / 25 | Reward: 5765.9 ± 3420.6 | Energy: 0.060 ± 0.177 | k-NN Dist: 6.825 ± 5.470
+Epoch 02 / 25 | Reward: 8221.3 ± 7.5 | Energy: 0.045 ± 0.169 | k-NN Dist: 5.445 ± 2.164
+Epoch 03 / 25 | Reward: 8181.9 ± 13.2 | Energy: 0.042 ± 0.167 | k-NN Dist: 5.136 ± 2.025
+Epoch 04 / 25 | Reward: 6739.6 ± 2016.5 | Energy: 0.079 ± 0.188 | k-NN Dist: 5.636 ± 6.729
+Epoch 05 / 25 | Reward: 8179.7 ± 27.7 | Energy: 0.046 ± 0.173 | k-NN Dist: 4.442 ± 1.651
+Epoch 06 / 25 | Reward: 8221.2 ± 8.7 | Energy: 0.037 ± 0.158 | k-NN Dist: 4.998 ± 5.923
+Epoch 07 / 25 | Reward: 8175.7 ± 57.1 | Energy: 0.065 ± 0.168 | k-NN Dist: 4.997 ± 2.857
+Epoch 08 / 25 | Reward: 8176.0 ± 22.8 | Energy: 0.035 ± 0.163 | k-NN Dist: 4.083 ± 1.455
+  --> Checkpoint Saved (New Best Composite Score!)
+Epoch 09 / 25 | Reward: 8221.0 ± 22.2 | Energy: 0.042 ± 0.168 | k-NN Dist: 4.775 ± 2.145
+Epoch 10 / 25 | Reward: 6896.0 ± 1916.3 | Energy: 0.058 ± 0.177 | k-NN Dist: 5.708 ± 4.941
+Epoch 11 / 25 | Reward: 8189.0 ± 74.8 | Energy: 0.052 ± 0.170 | k-NN Dist: 5.514 ± 2.349
+Epoch 12 / 25 | Reward: 6662.2 ± 2143.2 | Energy: 0.042 ± 0.160 | k-NN Dist: 5.861 ± 5.919
+Epoch 13 / 25 | Reward: 8210.4 ± 33.8 | Energy: 0.048 ± 0.164 | k-NN Dist: 4.909 ± 1.820
+Epoch 14 / 25 | Reward: 7132.2 ± 1484.7 | Energy: 0.100 ± 0.208 | k-NN Dist: 5.574 ± 5.671
+Epoch 15 / 25 | Reward: 5609.8 ± 3600.0 | Energy: 0.052 ± 0.170 | k-NN Dist: 5.125 ± 3.856
+Epoch 16 / 25 | Reward: 6749.9 ± 2020.1 | Energy: 0.051 ± 0.174 | k-NN Dist: 6.059 ± 9.986
+Epoch 17 / 25 | Reward: 8204.0 ± 35.5 | Energy: 0.041 ± 0.159 | k-NN Dist: 4.665 ± 5.037
+Epoch 18 / 25 | Reward: 8153.9 ± 50.9 | Energy: 0.047 ± 0.169 | k-NN Dist: 5.063 ± 2.259
+Epoch 19 / 25 | Reward: 5357.3 ± 3375.7 | Energy: 0.047 ± 0.165 | k-NN Dist: 6.108 ± 9.899
+Epoch 20 / 25 | Reward: 8207.3 ± 29.6 | Energy: 0.085 ± 0.186 | k-NN Dist: 5.069 ± 1.779
+Epoch 21 / 25 | Reward: 8169.1 ± 36.9 | Energy: 0.076 ± 0.193 | k-NN Dist: 4.741 ± 1.608
+Epoch 22 / 25 | Reward: 8163.4 ± 31.1 | Energy: 0.037 ± 0.165 | k-NN Dist: 4.329 ± 2.619
+Epoch 23 / 25 | Reward: 7025.2 ± 1582.5 | Energy: 0.058 ± 0.170 | k-NN Dist: 4.470 ± 3.054
+Epoch 24 / 25 | Reward: 8220.3 ± 39.3 | Energy: 0.062 ± 0.172 | k-NN Dist: 5.124 ± 2.097
+Epoch 25 / 25 | Reward: 8227.1 ± 55.2 | Energy: 0.059 ± 0.169 | k-NN Dist: 5.147 ± 2.314
+--> Phase Complete | Final Train Loss: 0.000295 | Final Validation Loss: 0.000835
+
+[DAgger] Phase Complete. Aggregating environment rollout data...
+[DAgger] Manifold Re-Mapped. New dataset size: 183039 steps.
+
+==========================================
+  LAUNCHING: DAgger Phase 6/10
+==========================================
+
+-> [ARCHITECTURAL CHECK] Initializing Gradient Descent Engine:
+   |-- Sub-Loss: Behavioral Cloning (MSE) -> [ACTIVE]
+   |-- Sub-Loss: Multi-Step Lookahead      -> [DISABLED]
+   |-- Sub-Loss: Lyapunov Safety Metric    -> [DISABLED]
+   +-------------------------------------------------------------
+Epoch 01 / 25 | Reward: 7601.5 ± 774.6 | Energy: 0.065 ± 0.179 | k-NN Dist: 5.842 ± 5.570
+Epoch 02 / 25 | Reward: 8128.4 ± 14.4 | Energy: 0.049 ± 0.173 | k-NN Dist: 4.432 ± 1.602
+Epoch 03 / 25 | Reward: 5757.6 ± 3429.4 | Energy: 0.053 ± 0.171 | k-NN Dist: 5.154 ± 3.930
+Epoch 04 / 25 | Reward: 6092.0 ± 2947.7 | Energy: 0.072 ± 0.179 | k-NN Dist: 5.189 ± 3.551
+Epoch 05 / 25 | Reward: 3956.5 ± 3176.5 | Energy: 0.053 ± 0.172 | k-NN Dist: 8705084.587 ± 334207342.792
+Epoch 06 / 25 | Reward: 8173.3 ± 1.8 | Energy: 0.059 ± 0.174 | k-NN Dist: 5.419 ± 4.211
+Epoch 07 / 25 | Reward: 5590.6 ± 3639.1 | Energy: 0.057 ± 0.171 | k-NN Dist: 5.067 ± 3.715
+Epoch 08 / 25 | Reward: 8194.1 ± 32.3 | Energy: 0.063 ± 0.176 | k-NN Dist: 5.262 ± 2.710
+Epoch 09 / 25 | Reward: 5621.1 ± 3610.9 | Energy: 0.055 ± 0.171 | k-NN Dist: 5.216 ± 3.649
+Epoch 10 / 25 | Reward: 6771.1 ± 1941.2 | Energy: 0.060 ± 0.176 | k-NN Dist: 5.618 ± 5.463
+Epoch 11 / 25 | Reward: 8179.5 ± 50.6 | Energy: 0.046 ± 0.162 | k-NN Dist: 5.051 ± 2.056
+Epoch 12 / 25 | Reward: 7928.5 ± 377.7 | Energy: 0.049 ± 0.165 | k-NN Dist: 5.059 ± 4.291
+Epoch 13 / 25 | Reward: 8190.3 ± 10.2 | Energy: 0.070 ± 0.181 | k-NN Dist: 4.682 ± 1.883
+Epoch 14 / 25 | Reward: 7771.3 ± 519.1 | Energy: 0.109 ± 0.213 | k-NN Dist: 5.701 ± 5.714
+Epoch 15 / 25 | Reward: 6877.2 ± 1942.1 | Energy: 0.069 ± 0.184 | k-NN Dist: 22676338.498 ± 904698087.279
+Epoch 16 / 25 | Reward: 8191.3 ± 26.8 | Energy: 0.059 ± 0.183 | k-NN Dist: 5.017 ± 2.145
+Epoch 17 / 25 | Reward: 7971.3 ± 393.9 | Energy: 0.063 ± 0.179 | k-NN Dist: 5.461 ± 6.927
+Epoch 18 / 25 | Reward: 8183.0 ± 11.0 | Energy: 0.086 ± 0.193 | k-NN Dist: 4.660 ± 4.107
+Epoch 19 / 25 | Reward: 8220.9 ± 10.2 | Energy: 0.062 ± 0.175 | k-NN Dist: 4.758 ± 2.058
+Epoch 20 / 25 | Reward: 8182.0 ± 18.9 | Energy: 0.114 ± 0.215 | k-NN Dist: 4.744 ± 1.962
+Epoch 21 / 25 | Reward: 8230.0 ± 4.3 | Energy: 0.064 ± 0.185 | k-NN Dist: 5.227 ± 3.717
+Epoch 22 / 25 | Reward: 8159.6 ± 10.7 | Energy: 0.078 ± 0.185 | k-NN Dist: 4.625 ± 1.914
+Epoch 23 / 25 | Reward: 8161.1 ± 7.1 | Energy: 0.054 ± 0.188 | k-NN Dist: 4.237 ± 1.591
+Epoch 24 / 25 | Reward: 8209.6 ± 33.3 | Energy: 0.055 ± 0.162 | k-NN Dist: 5.138 ± 2.748
+Epoch 25 / 25 | Reward: 8167.9 ± 23.4 | Energy: 0.069 ± 0.165 | k-NN Dist: 2073040.174 ± 101355156.290
+--> Phase Complete | Final Train Loss: 0.000288 | Final Validation Loss: 0.000809
+
+[DAgger] Phase Complete. Aggregating environment rollout data...
+[DAgger] Manifold Re-Mapped. New dataset size: 188039 steps.
+
+==========================================
+  LAUNCHING: DAgger Phase 7/10
+==========================================
+
+-> [ARCHITECTURAL CHECK] Initializing Gradient Descent Engine:
+   |-- Sub-Loss: Behavioral Cloning (MSE) -> [ACTIVE]
+   |-- Sub-Loss: Multi-Step Lookahead      -> [DISABLED]
+   |-- Sub-Loss: Lyapunov Safety Metric    -> [DISABLED]
+   +-------------------------------------------------------------
+Epoch 01 / 25 | Reward: 6710.7 ± 2106.2 | Energy: 0.200 ± 0.270 | k-NN Dist: 5.865 ± 12.361
+Epoch 02 / 25 | Reward: 8202.4 ± 38.3 | Energy: 0.057 ± 0.175 | k-NN Dist: 4.446 ± 1.650
+Epoch 03 / 25 | Reward: 8176.6 ± 44.8 | Energy: 0.053 ± 0.167 | k-NN Dist: 4.844 ± 2.610
+Epoch 04 / 25 | Reward: 6519.8 ± 2447.5 | Energy: 0.073 ± 0.183 | k-NN Dist: 6.457 ± 14.850
+Epoch 05 / 25 | Reward: 4165.1 ± 3070.5 | Energy: 0.072 ± 0.190 | k-NN Dist: 8.175 ± 12.289
+Epoch 06 / 25 | Reward: 7086.7 ± 1562.7 | Energy: 0.127 ± 0.203 | k-NN Dist: 6.159 ± 15.016
+Epoch 07 / 25 | Reward: 8212.5 ± 31.8 | Energy: 0.042 ± 0.166 | k-NN Dist: 6.531 ± 3.480
+Epoch 08 / 25 | Reward: 8002.3 ± 307.2 | Energy: 0.071 ± 0.180 | k-NN Dist: 6.016 ± 5.349
+Epoch 09 / 25 | Reward: 8167.1 ± 59.1 | Energy: 0.052 ± 0.170 | k-NN Dist: 5.417 ± 2.870
+Epoch 10 / 25 | Reward: 8179.2 ± 16.7 | Energy: 0.074 ± 0.182 | k-NN Dist: 4.690 ± 1.945
+Epoch 11 / 25 | Reward: 6383.6 ± 2483.2 | Energy: 0.100 ± 0.189 | k-NN Dist: 4.912 ± 3.064
+Epoch 12 / 25 | Reward: 8194.9 ± 9.2 | Energy: 0.064 ± 0.176 | k-NN Dist: 5.052 ± 4.752
+Epoch 13 / 25 | Reward: 8213.7 ± 24.9 | Energy: 0.061 ± 0.167 | k-NN Dist: 5.103 ± 2.012
+Epoch 14 / 25 | Reward: 8190.3 ± 26.1 | Energy: 0.063 ± 0.175 | k-NN Dist: 4.752 ± 2.023
+Epoch 15 / 25 | Reward: 8232.7 ± 32.8 | Energy: 0.050 ± 0.177 | k-NN Dist: 4.784 ± 1.505
+Epoch 16 / 25 | Reward: 8198.1 ± 19.4 | Energy: 0.073 ± 0.178 | k-NN Dist: 4.665 ± 1.860
+Epoch 17 / 25 | Reward: 8179.1 ± 42.0 | Energy: 0.075 ± 0.178 | k-NN Dist: 5.436 ± 10.020
+Epoch 18 / 25 | Reward: 8149.4 ± 26.2 | Energy: 0.054 ± 0.176 | k-NN Dist: 4.737 ± 1.852
+Epoch 19 / 25 | Reward: 7330.7 ± 1080.0 | Energy: 0.093 ± 0.194 | k-NN Dist: 5.336 ± 11.481
+Epoch 20 / 25 | Reward: 8214.0 ± 28.6 | Energy: 0.045 ± 0.164 | k-NN Dist: 4.759 ± 1.926
+Epoch 21 / 25 | Reward: 8158.8 ± 15.7 | Energy: 0.059 ± 0.177 | k-NN Dist: 4.193 ± 1.505
+Epoch 22 / 25 | Reward: 5631.4 ± 3530.3 | Energy: 0.049 ± 0.167 | k-NN Dist: 5.075 ± 4.212
+Epoch 23 / 25 | Reward: 8228.4 ± 50.2 | Energy: 0.046 ± 0.160 | k-NN Dist: 5.057 ± 2.009
+Epoch 24 / 25 | Reward: 8171.3 ± 41.1 | Energy: 0.102 ± 0.214 | k-NN Dist: 4.653 ± 1.627
+Epoch 25 / 25 | Reward: 8199.9 ± 39.3 | Energy: 0.041 ± 0.172 | k-NN Dist: 4.590 ± 1.663
+--> Phase Complete | Final Train Loss: 0.000287 | Final Validation Loss: 0.000815
+
+[DAgger] Phase Complete. Aggregating environment rollout data...
+[DAgger] Manifold Re-Mapped. New dataset size: 193039 steps.
+
+==========================================
+  LAUNCHING: DAgger Phase 8/10
+==========================================
+
+-> [ARCHITECTURAL CHECK] Initializing Gradient Descent Engine:
+   |-- Sub-Loss: Behavioral Cloning (MSE) -> [ACTIVE]
+   |-- Sub-Loss: Multi-Step Lookahead      -> [DISABLED]
+   |-- Sub-Loss: Lyapunov Safety Metric    -> [DISABLED]
+   +-------------------------------------------------------------
+Epoch 01 / 25 | Reward: 8200.1 ± 22.3 | Energy: 0.040 ± 0.172 | k-NN Dist: 5.311 ± 3.708
+Epoch 02 / 25 | Reward: 8194.6 ± 19.9 | Energy: 0.093 ± 0.213 | k-NN Dist: 5.442 ± 5.285
+Epoch 03 / 25 | Reward: 7170.7 ± 1428.1 | Energy: 0.039 ± 0.167 | k-NN Dist: 6.039 ± 7.728
+Epoch 04 / 25 | Reward: 5635.7 ± 3514.4 | Energy: 0.053 ± 0.168 | k-NN Dist: 6.253 ± 6.306
+Epoch 05 / 25 | Reward: 8186.8 ± 45.1 | Energy: 0.038 ± 0.168 | k-NN Dist: 4.649 ± 1.790
+Epoch 06 / 25 | Reward: 7119.5 ± 1585.3 | Energy: 0.091 ± 0.189 | k-NN Dist: 6.809 ± 14.441
+Epoch 07 / 25 | Reward: 8223.3 ± 27.0 | Energy: 0.219 ± 0.317 | k-NN Dist: 4.712 ± 1.898
+Epoch 08 / 25 | Reward: 8134.4 ± 94.6 | Energy: 0.042 ± 0.166 | k-NN Dist: 5.646 ± 4.259
+Epoch 09 / 25 | Reward: 8159.1 ± 24.2 | Energy: 0.055 ± 0.179 | k-NN Dist: 4.728 ± 1.693
+Epoch 10 / 25 | Reward: 8200.6 ± 10.5 | Energy: 0.087 ± 0.194 | k-NN Dist: 4.808 ± 1.966
+Epoch 11 / 25 | Reward: 5065.4 ± 2302.8 | Energy: 0.134 ± 0.252 | k-NN Dist: 7.292 ± 9.728
+Epoch 12 / 25 | Reward: 8158.3 ± 13.6 | Energy: 0.077 ± 0.184 | k-NN Dist: 4.680 ± 2.136
+Epoch 13 / 25 | Reward: 8258.2 ± 30.3 | Energy: 0.053 ± 0.177 | k-NN Dist: 5.467 ± 1.811
+Epoch 14 / 25 | Reward: 8192.1 ± 43.4 | Energy: 0.061 ± 0.187 | k-NN Dist: 4.567 ± 1.701
+Epoch 15 / 25 | Reward: 8218.3 ± 4.0 | Energy: 0.054 ± 0.177 | k-NN Dist: 4.772 ± 1.879
+Epoch 16 / 25 | Reward: 8195.9 ± 28.6 | Energy: 0.099 ± 0.192 | k-NN Dist: 5.242 ± 2.093
+Epoch 17 / 25 | Reward: 6065.4 ± 1738.6 | Energy: 0.119 ± 0.216 | k-NN Dist: 7.438 ± 33.799
+Epoch 18 / 25 | Reward: 8197.9 ± 14.8 | Energy: 0.099 ± 0.213 | k-NN Dist: 4.759 ± 2.224
+Epoch 19 / 25 | Reward: 8212.5 ± 42.7 | Energy: 0.045 ± 0.167 | k-NN Dist: 5.477 ± 2.345
+Epoch 20 / 25 | Reward: 8159.9 ± 4.1 | Energy: 0.035 ± 0.159 | k-NN Dist: 4.711 ± 1.850
+Epoch 21 / 25 | Reward: 8205.3 ± 26.6 | Energy: 0.038 ± 0.154 | k-NN Dist: 4.697 ± 1.814
+Epoch 22 / 25 | Reward: 7910.9 ± 401.2 | Energy: 0.115 ± 0.209 | k-NN Dist: 5.432 ± 6.457
+Epoch 23 / 25 | Reward: 8184.6 ± 28.5 | Energy: 0.058 ± 0.184 | k-NN Dist: 5.071 ± 4.735
+Epoch 24 / 25 | Reward: 8185.2 ± 15.3 | Energy: 0.055 ± 0.164 | k-NN Dist: 4.681 ± 2.191
+Epoch 25 / 25 | Reward: 8184.2 ± 35.3 | Energy: 0.042 ± 0.161 | k-NN Dist: 4.541 ± 2.745
+--> Phase Complete | Final Train Loss: 0.000289 | Final Validation Loss: 0.000836
+
+[DAgger] Phase Complete. Aggregating environment rollout data...
+[DAgger] Manifold Re-Mapped. New dataset size: 197135 steps.
+
+==========================================
+  LAUNCHING: DAgger Phase 9/10
+==========================================
+
+-> [ARCHITECTURAL CHECK] Initializing Gradient Descent Engine:
+   |-- Sub-Loss: Behavioral Cloning (MSE) -> [ACTIVE]
+   |-- Sub-Loss: Multi-Step Lookahead      -> [DISABLED]
+   |-- Sub-Loss: Lyapunov Safety Metric    -> [DISABLED]
+   +-------------------------------------------------------------
+Epoch 01 / 25 | Reward: 8154.4 ± 13.7 | Energy: 0.053 ± 0.167 | k-NN Dist: 5.104 ± 2.195
+Epoch 02 / 25 | Reward: 8143.4 ± 68.3 | Energy: 0.042 ± 0.165 | k-NN Dist: 4.388 ± 1.895
+Epoch 03 / 25 | Reward: 8205.6 ± 29.8 | Energy: 0.050 ± 0.160 | k-NN Dist: 4.450 ± 1.873
+Epoch 04 / 25 | Reward: 8154.5 ± 66.3 | Energy: 0.039 ± 0.161 | k-NN Dist: 5.416 ± 4.940
+Epoch 05 / 25 | Reward: 8157.7 ± 35.5 | Energy: 0.048 ± 0.165 | k-NN Dist: 4.509 ± 2.113
+Epoch 06 / 25 | Reward: 8228.7 ± 23.7 | Energy: 0.068 ± 0.186 | k-NN Dist: 5.448 ± 2.999
+Epoch 07 / 25 | Reward: 8181.1 ± 39.6 | Energy: 0.047 ± 0.163 | k-NN Dist: 4.862 ± 2.291
+Epoch 08 / 25 | Reward: 8200.1 ± 40.1 | Energy: 0.070 ± 0.174 | k-NN Dist: 4.993 ± 2.268
+Epoch 09 / 25 | Reward: 8132.3 ± 54.6 | Energy: 0.059 ± 0.171 | k-NN Dist: 4.681 ± 1.835
+Epoch 10 / 25 | Reward: 8146.4 ± 26.5 | Energy: 0.054 ± 0.173 | k-NN Dist: 4.653 ± 6.245
+Epoch 11 / 25 | Reward: 8202.7 ± 7.7 | Energy: 0.051 ± 0.176 | k-NN Dist: 4.871 ± 2.653
+Epoch 12 / 25 | Reward: 8216.3 ± 16.2 | Energy: 0.117 ± 0.220 | k-NN Dist: 5.199 ± 2.662
+Epoch 13 / 25 | Reward: 8143.4 ± 52.1 | Energy: 0.063 ± 0.171 | k-NN Dist: 5.211 ± 3.667
+Epoch 14 / 25 | Reward: 8198.8 ± 14.4 | Energy: 0.040 ± 0.164 | k-NN Dist: 4.618 ± 1.806
+Epoch 15 / 25 | Reward: 8178.3 ± 57.0 | Energy: 0.043 ± 0.167 | k-NN Dist: 5.907 ± 4.141
+Epoch 16 / 25 | Reward: 8204.3 ± 13.4 | Energy: 0.053 ± 0.170 | k-NN Dist: 5.231 ± 4.392
+Epoch 17 / 25 | Reward: 8201.6 ± 22.1 | Energy: 0.080 ± 0.193 | k-NN Dist: 4.823 ± 1.970
+Epoch 18 / 25 | Reward: 5959.9 ± 2232.5 | Energy: 0.046 ± 0.167 | k-NN Dist: 6.256 ± 8.165
+Epoch 19 / 25 | Reward: 8178.5 ± 18.2 | Energy: 0.062 ± 0.178 | k-NN Dist: 5.207 ± 2.264
+Epoch 20 / 25 | Reward: 8186.7 ± 46.7 | Energy: 0.088 ± 0.189 | k-NN Dist: 5.422 ± 3.402
+Epoch 21 / 25 | Reward: 8204.6 ± 13.2 | Energy: 0.051 ± 0.167 | k-NN Dist: 4.566 ± 1.517
+Epoch 22 / 25 | Reward: 8167.6 ± 73.4 | Energy: 0.056 ± 0.172 | k-NN Dist: 5.280 ± 2.539
+Epoch 23 / 25 | Reward: 6549.5 ± 2268.1 | Energy: 0.120 ± 0.258 | k-NN Dist: 5.749 ± 7.275
+Epoch 24 / 25 | Reward: 8144.2 ± 18.6 | Energy: 0.081 ± 0.202 | k-NN Dist: 4.454 ± 2.001
+Epoch 25 / 25 | Reward: 8216.9 ± 39.3 | Energy: 0.058 ± 0.177 | k-NN Dist: 4.904 ± 1.694
+--> Phase Complete | Final Train Loss: 0.000295 | Final Validation Loss: 0.000805
+
+[DAgger] Phase Complete. Aggregating environment rollout data...
+[DAgger] Manifold Re-Mapped. New dataset size: 202135 steps.
+
+==========================================
+  LAUNCHING: DAgger Phase 10/10
+==========================================
+
+-> [ARCHITECTURAL CHECK] Initializing Gradient Descent Engine:
+   |-- Sub-Loss: Behavioral Cloning (MSE) -> [ACTIVE]
+   |-- Sub-Loss: Multi-Step Lookahead      -> [DISABLED]
+   |-- Sub-Loss: Lyapunov Safety Metric    -> [DISABLED]
+   +-------------------------------------------------------------
+Epoch 01 / 25 | Reward: 7778.8 ± 612.0 | Energy: 0.056 ± 0.161 | k-NN Dist: 5.357 ± 5.840
+Epoch 02 / 25 | Reward: 8189.3 ± 18.5 | Energy: 0.141 ± 0.223 | k-NN Dist: 4.438 ± 1.555
+Epoch 03 / 25 | Reward: 5061.5 ± 3207.8 | Energy: 0.049 ± 0.171 | k-NN Dist: 6.760 ± 8.414
+Epoch 04 / 25 | Reward: 8216.1 ± 75.0 | Energy: 0.063 ± 0.187 | k-NN Dist: 5.005 ± 2.137
+Epoch 05 / 25 | Reward: 8185.3 ± 37.0 | Energy: 0.088 ± 0.183 | k-NN Dist: 4.864 ± 2.286
+Epoch 06 / 25 | Reward: 8172.7 ± 6.3 | Energy: 0.039 ± 0.156 | k-NN Dist: 4.676 ± 1.967
+Epoch 07 / 25 | Reward: 8168.0 ± 26.6 | Energy: 0.054 ± 0.170 | k-NN Dist: 4.936 ± 2.534
+Epoch 08 / 25 | Reward: 8160.3 ± 10.2 | Energy: 0.051 ± 0.173 | k-NN Dist: 4.554 ± 1.827
+Epoch 09 / 25 | Reward: 8196.2 ± 25.0 | Energy: 0.054 ± 0.172 | k-NN Dist: 4.778 ± 1.966
+Epoch 10 / 25 | Reward: 8187.9 ± 19.1 | Energy: 0.053 ± 0.170 | k-NN Dist: 4.472 ± 1.436
+Epoch 11 / 25 | Reward: 8164.2 ± 40.6 | Energy: 0.046 ± 0.167 | k-NN Dist: 4.671 ± 1.826
+Epoch 12 / 25 | Reward: 8006.1 ± 249.1 | Energy: 0.064 ± 0.176 | k-NN Dist: 5.463 ± 5.187
+Epoch 13 / 25 | Reward: 8189.9 ± 14.4 | Energy: 0.134 ± 0.231 | k-NN Dist: 4.617 ± 4.593
+Epoch 14 / 25 | Reward: 8229.2 ± 20.1 | Energy: 0.072 ± 0.181 | k-NN Dist: 4.782 ± 1.626
+Epoch 15 / 25 | Reward: 7412.4 ± 1185.3 | Energy: 0.095 ± 0.204 | k-NN Dist: 5.842 ± 9.446
+Epoch 16 / 25 | Reward: 8182.6 ± 26.3 | Energy: 0.031 ± 0.162 | k-NN Dist: 5.869 ± 2.952
+Epoch 17 / 25 | Reward: 8190.0 ± 12.3 | Energy: 0.078 ± 0.199 | k-NN Dist: 4.726 ± 2.292
+Epoch 18 / 25 | Reward: 8175.1 ± 42.4 | Energy: 0.045 ± 0.167 | k-NN Dist: 5.173 ± 2.444
+Epoch 19 / 25 | Reward: 8204.1 ± 44.8 | Energy: 0.115 ± 0.201 | k-NN Dist: 4.793 ± 1.871
+Epoch 20 / 25 | Reward: 8232.3 ± 31.0 | Energy: 0.047 ± 0.168 | k-NN Dist: 4.797 ± 1.947
+Epoch 21 / 25 | Reward: 8182.0 ± 45.8 | Energy: 0.070 ± 0.176 | k-NN Dist: 5.406 ± 4.190
+Epoch 22 / 25 | Reward: 8209.2 ± 17.2 | Energy: 0.047 ± 0.169 | k-NN Dist: 4.855 ± 2.178
+Epoch 23 / 25 | Reward: 8204.1 ± 14.1 | Energy: 0.050 ± 0.170 | k-NN Dist: 5.006 ± 2.353
+Epoch 24 / 25 | Reward: 8152.8 ± 13.8 | Energy: 0.053 ± 0.157 | k-NN Dist: 5.266 ± 2.222
+Epoch 25 / 25 | Reward: 6111.6 ± 2920.5 | Energy: 0.075 ± 0.198 | k-NN Dist: 6.004 ± 4.006
+--> Phase Complete | Final Train Loss: 0.000297 | Final Validation Loss: 0.000796
+
+[DAgger] Phase Complete. Aggregating environment rollout data...
+[DAgger] Manifold Re-Mapped. New dataset size: 207080 steps.
+
+[COMPLETE] Optimization finished. Exporting structural metrics plots...
+
+==================== FINAL POLICY VERIFICATION ====================
+Final Reward:          8169.56 ± 38.36
+Final Manifold Energy: 0.0354 ± 0.1629
+Final k-NN Distance:   4.650 ± 1.830
+===================================================================
+
+Spawning video environment for Humanoid-v5...
+Saved video to behavior_cloning_DAGGER.mp4 | Total Reward: 8155.92
+(il-lab) darkdragon@MacBook-Pro-361 pgss-L4R-project % 

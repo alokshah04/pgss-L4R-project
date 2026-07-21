@@ -1,0 +1,372 @@
+(base) darkdragon@MacBook-Pro-361 pgss-L4R-project % conda activate il-lab                            
+(il-lab) darkdragon@MacBook-Pro-361 pgss-L4R-project % python IL-manfiold-adherence-SJL/train.py control
+python: can't open file '/Users/darkdragon/Documents/GitHub/pgss-L4R-project/IL-manfiold-adherence-SJL/train.py': [Errno 2] No such file or directory
+(il-lab) darkdragon@MacBook-Pro-361 pgss-L4R-project % IL-manifold-adherence stuffs/Scripts/train.py
+zsh: command not found: IL-manifold-adherence
+(il-lab) darkdragon@MacBook-Pro-361 pgss-L4R-project % python IL-manifold-adherence stuffs/Scripts/train.py control
+python: can't open file '/Users/darkdragon/Documents/GitHub/pgss-L4R-project/IL-manifold-adherence': [Errno 2] No such file or directory
+(il-lab) darkdragon@MacBook-Pro-361 pgss-L4R-project % python IL-manifold-adherence_ stuffs/Scripts/train.py
+python: can't open file '/Users/darkdragon/Documents/GitHub/pgss-L4R-project/IL-manifold-adherence_': [Errno 2] No such file or directory
+(il-lab) darkdragon@MacBook-Pro-361 pgss-L4R-project % python IL-manifold-adherence-stuffs/Scripts/train.py control
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[CLI OVERRIDE] Training Mode successfully set to: CONTROL
+[START] Pipeline initialized in training mode: CONTROL
+/opt/anaconda3/envs/il-lab/lib/python3.11/site-packages/stable_baselines3/common/buffers.py:242: UserWarning: This system does not have apparently enough memory to store the complete replay buffer 5.64GB > 1.67GB
+  warnings.warn(
+Train Expert Rollouts: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 160/160 [01:35<00:00,  1.68it/s]
+Val Expert Rollouts:  80%|█████████████████████████████████████████████████████████████████████████████████████▌                     | 32/40 [00:22<00:05,  1.51it/s]Val Expert Rollouts:  80%|█████████████████████████████████████████████████████████████████████████████████████▌                     | 32/40 [00:23<00:05,  1.35it/s]
+Traceback (most recent call last):
+  File "/Users/darkdragon/Documents/GitHub/pgss-L4R-project/IL-manifold-adherence-stuffs/Scripts/train.py", line 300, in <module>
+    vo_raw, va_raw, vno_raw, vna_raw = utils.collect_trajectories(env, expert, config.NUM_VAL_TRAJECTORIES, desc="Val Expert Rollouts")
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/darkdragon/Documents/GitHub/pgss-L4R-project/IL-manifold-adherence-stuffs/Scripts/utils.py", line 55, in collect_trajectories
+    next_action, _ = expert.predict(next_obs, deterministic=True)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/il-lab/lib/python3.11/site-packages/stable_baselines3/common/base_class.py", line 557, in predict
+    return self.policy.predict(observation, state, episode_start, deterministic)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/il-lab/lib/python3.11/site-packages/stable_baselines3/common/policies.py", line 368, in predict
+    actions = self._predict(obs_tensor, deterministic=deterministic)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/il-lab/lib/python3.11/site-packages/sb3_contrib/tqc/policies.py", line 418, in _predict
+    return self.actor(observation, deterministic)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/il-lab/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/il-lab/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/il-lab/lib/python3.11/site-packages/sb3_contrib/tqc/policies.py", line 169, in forward
+    return self.action_dist.actions_from_params(mean_actions, log_std, deterministic=deterministic, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/il-lab/lib/python3.11/site-packages/stable_baselines3/common/distributions.py", line 192, in actions_from_params
+    self.proba_distribution(mean_actions, log_std)
+  File "/opt/anaconda3/envs/il-lab/lib/python3.11/site-packages/stable_baselines3/common/distributions.py", line 226, in proba_distribution
+    super().proba_distribution(mean_actions, log_std)
+  File "/opt/anaconda3/envs/il-lab/lib/python3.11/site-packages/stable_baselines3/common/distributions.py", line 166, in proba_distribution
+    self.distribution = Normal(mean_actions, action_std)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/il-lab/lib/python3.11/site-packages/torch/distributions/normal.py", line 55, in __init__
+    def __init__(
+
+KeyboardInterrupt
+
+(il-lab) darkdragon@MacBook-Pro-361 pgss-L4R-project % python IL-manifold-adherence-stuffs/Scripts/train.py control
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[CLI OVERRIDE] Training Mode successfully set to: CONTROL
+[START] Pipeline initialized in training mode: CONTROL
+/opt/anaconda3/envs/il-lab/lib/python3.11/site-packages/stable_baselines3/common/buffers.py:242: UserWarning: This system does not have apparently enough memory to store the complete replay buffer 5.64GB > 3.60GB
+  warnings.warn(
+Train Expert Rollouts: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 160/160 [01:24<00:00,  1.90it/s]
+Val Expert Rollouts: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 40/40 [00:20<00:00,  1.95it/s]
+
+[INFO] Spawning k-NN Manifold Reference Engine...
+
+[INFO] No cache found. Pre-training Energy-Based Manifold Critic from scratch...
+  Critic Epoch 01/20 | Stable Loss: 0.3158
+  Critic Epoch 02/20 | Stable Loss: 0.1010
+  Critic Epoch 03/20 | Stable Loss: 0.0680
+  Critic Epoch 04/20 | Stable Loss: 0.0515
+  Critic Epoch 05/20 | Stable Loss: 0.0427
+  Critic Epoch 06/20 | Stable Loss: 0.0375
+  Critic Epoch 07/20 | Stable Loss: 0.0337
+  Critic Epoch 08/20 | Stable Loss: 0.0304
+  Critic Epoch 09/20 | Stable Loss: 0.0287
+  Critic Epoch 10/20 | Stable Loss: 0.0271
+  Critic Epoch 11/20 | Stable Loss: 0.0253
+  Critic Epoch 12/20 | Stable Loss: 0.0238
+  Critic Epoch 13/20 | Stable Loss: 0.0221
+  Critic Epoch 14/20 | Stable Loss: 0.0211
+  Critic Epoch 15/20 | Stable Loss: 0.0201
+  Critic Epoch 16/20 | Stable Loss: 0.0197
+  Critic Epoch 17/20 | Stable Loss: 0.0186
+  Critic Epoch 18/20 | Stable Loss: 0.0184
+  Critic Epoch 19/20 | Stable Loss: 0.0175
+  Critic Epoch 20/20 | Stable Loss: 0.0174
+[INFO] Critic training complete. Saving weights to cache: energy_critic_expert_cache.pt
+
+-> [ARCHITECTURAL CHECK] Initializing Gradient Descent Engine:
+   |-- Sub-Loss: Behavioral Cloning (MSE) -> [ACTIVE]
+   |-- Sub-Loss: Multi-Step Lookahead      -> [DISABLED]
+   |-- Sub-Loss: Lyapunov Safety Metric    -> [DISABLED]
+   +-------------------------------------------------------------
+Epoch 01 / 250 | Reward: 382.7 ± 26.1 | Energy: 1.228 ± 1.067 | k-NN Dist: 14.087 ± 10.768
+  --> Checkpoint Saved (New Best Composite Score!)
+Epoch 02 / 250 | Reward: 3010.0 ± 3640.9 | Energy: 0.559 ± 0.561 | k-NN Dist: 6.584 ± 6.664
+  --> Checkpoint Saved (New Best Composite Score!)
+Epoch 03 / 250 | Reward: 3010.4 ± 3572.4 | Energy: 0.538 ± 0.600 | k-NN Dist: 7.788 ± 17.666
+Epoch 04 / 250 | Reward: 5728.5 ± 3532.0 | Energy: 0.342 ± 0.473 | k-NN Dist: 6.845 ± 5.604
+  --> Checkpoint Saved (New Best Composite Score!)
+Epoch 05 / 250 | Reward: 5550.0 ± 3455.1 | Energy: 0.292 ± 0.405 | k-NN Dist: 10.804 ± 10.444
+Epoch 06 / 250 | Reward: 6526.8 ± 2304.0 | Energy: 0.298 ± 0.416 | k-NN Dist: 5.964 ± 4.316
+  --> Checkpoint Saved (New Best Composite Score!)
+Epoch 07 / 250 | Reward: 5675.2 ± 3600.8 | Energy: 0.270 ± 0.402 | k-NN Dist: 6.815 ± 4.304
+Epoch 08 / 250 | Reward: 8140.9 ± 28.7 | Energy: 0.365 ± 0.457 | k-NN Dist: 5.180 ± 2.446
+  --> Checkpoint Saved (New Best Composite Score!)
+Epoch 09 / 250 | Reward: 8229.0 ± 43.2 | Energy: 0.175 ± 0.298 | k-NN Dist: 4.653 ± 1.577
+  --> Checkpoint Saved (New Best Composite Score!)
+Epoch 10 / 250 | Reward: 8199.8 ± 99.1 | Energy: 0.129 ± 0.260 | k-NN Dist: 4.976 ± 2.632
+Epoch 11 / 250 | Reward: 8188.7 ± 16.7 | Energy: 0.241 ± 0.359 | k-NN Dist: 5.275 ± 4.076
+Epoch 12 / 250 | Reward: 8200.7 ± 16.0 | Energy: 0.177 ± 0.311 | k-NN Dist: 4.719 ± 1.702
+Epoch 13 / 250 | Reward: 8088.2 ± 16.8 | Energy: 0.131 ± 0.249 | k-NN Dist: 4.700 ± 1.985
+Epoch 14 / 250 | Reward: 5760.4 ± 3425.6 | Energy: 0.213 ± 0.353 | k-NN Dist: 6.191 ± 4.376
+Epoch 15 / 250 | Reward: 7602.0 ± 712.5 | Energy: 0.203 ± 0.321 | k-NN Dist: 8.150 ± 61.399
+Epoch 16 / 250 | Reward: 8142.9 ± 20.0 | Energy: 0.110 ± 0.236 | k-NN Dist: 1211528.826 ± 66346830.913
+Epoch 17 / 250 | Reward: 2793.3 ± 1474.6 | Energy: 0.106 ± 0.234 | k-NN Dist: 13.332 ± 40.855
+Epoch 18 / 250 | Reward: 8190.0 ± 38.3 | Energy: 0.090 ± 0.221 | k-NN Dist: 4.930 ± 1.665
+  --> Checkpoint Saved (New Best Composite Score!)
+Epoch 19 / 250 | Reward: 5647.3 ± 3622.2 | Energy: 0.151 ± 0.258 | k-NN Dist: 4.588 ± 2.844
+Epoch 20 / 250 | Reward: 8140.8 ± 13.3 | Energy: 0.104 ± 0.232 | k-NN Dist: 4.555 ± 1.941
+Epoch 21 / 250 | Reward: 8228.4 ± 29.2 | Energy: 0.082 ± 0.198 | k-NN Dist: 4.419 ± 1.424
+  --> Checkpoint Saved (New Best Composite Score!)
+Epoch 22 / 250 | Reward: 8177.1 ± 12.1 | Energy: 0.137 ± 0.260 | k-NN Dist: 4.882 ± 1.809
+Epoch 23 / 250 | Reward: 5613.4 ± 3573.6 | Energy: 0.129 ± 0.240 | k-NN Dist: 6.422 ± 4.071
+Epoch 24 / 250 | Reward: 8230.3 ± 17.3 | Energy: 0.079 ± 0.207 | k-NN Dist: 4.674 ± 1.511
+Epoch 25 / 250 | Reward: 8202.1 ± 15.6 | Energy: 0.101 ± 0.242 | k-NN Dist: 5.397 ± 6.863
+Epoch 26 / 250 | Reward: 8174.5 ± 13.0 | Energy: 0.092 ± 0.226 | k-NN Dist: 4.839 ± 1.726
+Epoch 27 / 250 | Reward: 8222.2 ± 19.5 | Energy: 0.189 ± 0.337 | k-NN Dist: 5.603 ± 4.783
+Epoch 28 / 250 | Reward: 8198.0 ± 12.3 | Energy: 0.105 ± 0.228 | k-NN Dist: 4.892 ± 2.174
+Epoch 29 / 250 | Reward: 8163.1 ± 29.7 | Energy: 0.087 ± 0.206 | k-NN Dist: 4.833 ± 2.079
+Epoch 30 / 250 | Reward: 8230.8 ± 18.2 | Energy: 0.084 ± 0.200 | k-NN Dist: 4.973 ± 1.639
+Epoch 31 / 250 | Reward: 7203.6 ± 1399.8 | Energy: 0.080 ± 0.215 | k-NN Dist: 8.332 ± 40.325
+Epoch 32 / 250 | Reward: 7392.5 ± 1158.5 | Energy: 0.066 ± 0.192 | k-NN Dist: 5.300 ± 3.603
+Epoch 33 / 250 | Reward: 5620.6 ± 3561.8 | Energy: 0.131 ± 0.232 | k-NN Dist: 5.450 ± 3.154
+Epoch 34 / 250 | Reward: 8230.6 ± 26.4 | Energy: 0.084 ± 0.205 | k-NN Dist: 4.520 ± 1.592
+Epoch 35 / 250 | Reward: 8103.4 ± 49.1 | Energy: 0.084 ± 0.210 | k-NN Dist: 5.509 ± 3.472
+Epoch 36 / 250 | Reward: 8194.7 ± 36.3 | Energy: 0.097 ± 0.222 | k-NN Dist: 4.772 ± 1.906
+Epoch 37 / 250 | Reward: 8155.3 ± 15.6 | Energy: 0.109 ± 0.234 | k-NN Dist: 4.812 ± 2.244
+Epoch 38 / 250 | Reward: 8168.4 ± 32.2 | Energy: 0.128 ± 0.246 | k-NN Dist: 4.216 ± 1.524
+Epoch 39 / 250 | Reward: 7485.0 ± 996.5 | Energy: 0.071 ± 0.207 | k-NN Dist: 7.674 ± 38.707
+Epoch 40 / 250 | Reward: 8183.9 ± 18.2 | Energy: 0.135 ± 0.264 | k-NN Dist: 5.045 ± 1.947
+Epoch 41 / 250 | Reward: 8191.0 ± 22.3 | Energy: 0.097 ± 0.223 | k-NN Dist: 4.532 ± 1.692
+Epoch 42 / 250 | Reward: 6685.8 ± 2042.3 | Energy: 0.073 ± 0.199 | k-NN Dist: 5.060 ± 3.268
+Epoch 43 / 250 | Reward: 8132.2 ± 34.5 | Energy: 0.076 ± 0.210 | k-NN Dist: 5.175 ± 3.171
+Epoch 44 / 250 | Reward: 8153.0 ± 21.8 | Energy: 0.086 ± 0.214 | k-NN Dist: 4.360 ± 1.422
+Epoch 45 / 250 | Reward: 8197.9 ± 22.1 | Energy: 0.066 ± 0.201 | k-NN Dist: 4.714 ± 1.878
+Epoch 46 / 250 | Reward: 8184.7 ± 44.4 | Energy: 0.054 ± 0.182 | k-NN Dist: 4.779 ± 1.767
+Epoch 47 / 250 | Reward: 6772.1 ± 2044.7 | Energy: 0.117 ± 0.249 | k-NN Dist: 14.900 ± 207.432
+Epoch 48 / 250 | Reward: 8181.7 ± 27.3 | Energy: 0.054 ± 0.191 | k-NN Dist: 4.664 ± 1.669
+Epoch 49 / 250 | Reward: 8207.1 ± 4.9 | Energy: 0.064 ± 0.196 | k-NN Dist: 5.316 ± 2.211
+Epoch 50 / 250 | Reward: 8206.4 ± 30.4 | Energy: 0.060 ± 0.192 | k-NN Dist: 5.375 ± 2.425
+Epoch 51 / 250 | Reward: 8186.0 ± 44.5 | Energy: 0.074 ± 0.208 | k-NN Dist: 5.507 ± 2.390
+Epoch 52 / 250 | Reward: 8219.8 ± 37.9 | Energy: 0.076 ± 0.190 | k-NN Dist: 4.713 ± 1.837
+Epoch 53 / 250 | Reward: 8128.5 ± 22.7 | Energy: 0.070 ± 0.205 | k-NN Dist: 4.457 ± 1.905
+Epoch 54 / 250 | Reward: 8161.4 ± 47.2 | Energy: 0.125 ± 0.231 | k-NN Dist: 5.069 ± 2.560
+Epoch 55 / 250 | Reward: 5778.0 ± 3430.6 | Energy: 0.070 ± 0.200 | k-NN Dist: 6.265 ± 4.616
+Epoch 56 / 250 | Reward: 8167.3 ± 23.6 | Energy: 0.107 ± 0.234 | k-NN Dist: 4.544 ± 4.839
+Epoch 57 / 250 | Reward: 6379.8 ± 2527.9 | Energy: 0.081 ± 0.197 | k-NN Dist: 6.790 ± 7.158
+Epoch 58 / 250 | Reward: 8211.4 ± 26.2 | Energy: 0.067 ± 0.210 | k-NN Dist: 4.815 ± 2.008
+Epoch 59 / 250 | Reward: 8203.7 ± 16.0 | Energy: 0.137 ± 0.276 | k-NN Dist: 4.804 ± 2.303
+Epoch 60 / 250 | Reward: 8132.7 ± 18.3 | Energy: 0.097 ± 0.220 | k-NN Dist: 4.736 ± 2.133
+Epoch 61 / 250 | Reward: 8185.6 ± 37.1 | Energy: 0.118 ± 0.259 | k-NN Dist: 4.973 ± 1.914
+Epoch 62 / 250 | Reward: 6996.8 ± 1685.7 | Energy: 0.063 ± 0.179 | k-NN Dist: 6.859 ± 5.058
+Epoch 63 / 250 | Reward: 5542.2 ± 2076.9 | Energy: 0.068 ± 0.193 | k-NN Dist: 6.067 ± 5.159
+Epoch 64 / 250 | Reward: 8188.6 ± 22.0 | Energy: 0.076 ± 0.200 | k-NN Dist: 4.531 ± 1.669
+Epoch 65 / 250 | Reward: 8164.8 ± 44.4 | Energy: 0.051 ± 0.183 | k-NN Dist: 5.544 ± 2.195
+Epoch 66 / 250 | Reward: 8180.8 ± 30.6 | Energy: 0.172 ± 0.287 | k-NN Dist: 4.623 ± 1.903
+Epoch 67 / 250 | Reward: 7168.5 ± 1465.7 | Energy: 0.065 ± 0.195 | k-NN Dist: 6.115 ± 6.910
+Epoch 68 / 250 | Reward: 8133.8 ± 20.6 | Energy: 0.062 ± 0.190 | k-NN Dist: 4.979 ± 2.534
+Epoch 69 / 250 | Reward: 8163.4 ± 48.1 | Energy: 0.041 ± 0.166 | k-NN Dist: 5.127 ± 2.318
+Epoch 70 / 250 | Reward: 6568.8 ± 2284.0 | Energy: 0.056 ± 0.184 | k-NN Dist: 5.032 ± 8.224
+Epoch 71 / 250 | Reward: 8158.8 ± 31.4 | Energy: 0.067 ± 0.200 | k-NN Dist: 4.452 ± 1.609
+Epoch 72 / 250 | Reward: 7744.0 ± 608.8 | Energy: 0.058 ± 0.191 | k-NN Dist: 5.888 ± 23.515
+Epoch 73 / 250 | Reward: 8157.1 ± 12.6 | Energy: 0.058 ± 0.195 | k-NN Dist: 5.011 ± 2.193
+Epoch 74 / 250 | Reward: 8195.3 ± 4.9 | Energy: 0.071 ± 0.214 | k-NN Dist: 4.702 ± 1.662
+Epoch 75 / 250 | Reward: 8159.7 ± 10.1 | Energy: 0.045 ± 0.167 | k-NN Dist: 5.033 ± 1.855
+Epoch 76 / 250 | Reward: 8146.9 ± 29.2 | Energy: 0.063 ± 0.193 | k-NN Dist: 4.971 ± 2.686
+Epoch 77 / 250 | Reward: 6689.5 ± 2084.9 | Energy: 0.098 ± 0.226 | k-NN Dist: 4.978 ± 3.902
+Epoch 78 / 250 | Reward: 8226.6 ± 3.8 | Energy: 0.063 ± 0.185 | k-NN Dist: 5.577 ± 2.499
+Epoch 79 / 250 | Reward: 8165.9 ± 57.9 | Energy: 0.102 ± 0.239 | k-NN Dist: 4.648 ± 1.998
+Epoch 80 / 250 | Reward: 5347.7 ± 2021.8 | Energy: 0.046 ± 0.172 | k-NN Dist: 8.347 ± 13.221
+Epoch 81 / 250 | Reward: 5671.2 ± 3571.9 | Energy: 0.046 ± 0.170 | k-NN Dist: 5.655 ± 3.253
+Epoch 82 / 250 | Reward: 8204.0 ± 12.4 | Energy: 0.063 ± 0.187 | k-NN Dist: 5.139 ± 2.540
+Epoch 83 / 250 | Reward: 6832.6 ± 1895.4 | Energy: 0.092 ± 0.223 | k-NN Dist: 5.647 ± 15.115
+Epoch 84 / 250 | Reward: 7596.7 ± 845.7 | Energy: 0.074 ± 0.207 | k-NN Dist: 8.015 ± 26.247
+Epoch 85 / 250 | Reward: 7420.2 ± 1015.1 | Energy: 0.086 ± 0.218 | k-NN Dist: 7.189 ± 16.880
+Epoch 86 / 250 | Reward: 8213.5 ± 28.2 | Energy: 0.064 ± 0.190 | k-NN Dist: 4.839 ± 1.952
+Epoch 87 / 250 | Reward: 8174.2 ± 16.0 | Energy: 0.064 ± 0.193 | k-NN Dist: 5.023 ± 1.853
+Epoch 88 / 250 | Reward: 8174.1 ± 41.3 | Energy: 0.062 ± 0.185 | k-NN Dist: 5.136 ± 4.236
+Epoch 89 / 250 | Reward: 8168.9 ± 42.9 | Energy: 0.071 ± 0.189 | k-NN Dist: 4.535 ± 1.664
+Epoch 90 / 250 | Reward: 8186.2 ± 26.1 | Energy: 0.035 ± 0.165 | k-NN Dist: 4.936 ± 2.298
+Epoch 91 / 250 | Reward: 4752.3 ± 3203.5 | Energy: 0.074 ± 0.210 | k-NN Dist: 6.900 ± 6.179
+Epoch 92 / 250 | Reward: 7920.5 ± 365.1 | Energy: 0.050 ± 0.181 | k-NN Dist: 5.351 ± 14.072
+Epoch 93 / 250 | Reward: 5564.8 ± 3656.9 | Energy: 0.074 ± 0.200 | k-NN Dist: 7.568 ± 5.980
+Epoch 94 / 250 | Reward: 7400.5 ± 1085.3 | Energy: 0.069 ± 0.201 | k-NN Dist: 7.234 ± 26.526
+Epoch 95 / 250 | Reward: 8119.7 ± 18.0 | Energy: 0.095 ± 0.212 | k-NN Dist: 4.763 ± 3.182
+Epoch 96 / 250 | Reward: 8183.6 ± 39.2 | Energy: 0.045 ± 0.183 | k-NN Dist: 6.360 ± 24.850
+Epoch 97 / 250 | Reward: 8201.7 ± 25.1 | Energy: 0.037 ± 0.158 | k-NN Dist: 4.701 ± 1.811
+Epoch 98 / 250 | Reward: 8211.3 ± 13.7 | Energy: 0.087 ± 0.220 | k-NN Dist: 5.489 ± 17.634
+Epoch 99 / 250 | Reward: 8230.7 ± 11.6 | Energy: 0.071 ± 0.190 | k-NN Dist: 5.121 ± 5.658
+Epoch 100 / 250 | Reward: 7557.8 ± 861.1 | Energy: 0.059 ± 0.185 | k-NN Dist: 5.730 ± 5.721
+Epoch 101 / 250 | Reward: 8173.4 ± 20.6 | Energy: 0.049 ± 0.165 | k-NN Dist: 5.096 ± 2.363
+Epoch 102 / 250 | Reward: 8209.5 ± 12.6 | Energy: 0.052 ± 0.170 | k-NN Dist: 4.987 ± 1.931
+Epoch 103 / 250 | Reward: 8178.9 ± 21.5 | Energy: 0.066 ± 0.189 | k-NN Dist: 4.515 ± 1.776
+Epoch 104 / 250 | Reward: 8205.7 ± 25.0 | Energy: 0.054 ± 0.177 | k-NN Dist: 6.025 ± 28.325
+Epoch 105 / 250 | Reward: 8222.4 ± 7.6 | Energy: 0.057 ± 0.182 | k-NN Dist: 4.834 ± 1.796
+Epoch 106 / 250 | Reward: 8200.6 ± 17.7 | Energy: 0.065 ± 0.201 | k-NN Dist: 4.686 ± 1.597
+Epoch 107 / 250 | Reward: 6271.1 ± 2757.7 | Energy: 0.058 ± 0.188 | k-NN Dist: 6.155 ± 5.243
+Epoch 108 / 250 | Reward: 8218.7 ± 22.5 | Energy: 0.069 ± 0.174 | k-NN Dist: 5.222 ± 6.597
+Epoch 109 / 250 | Reward: 7760.6 ± 636.4 | Energy: 0.057 ± 0.183 | k-NN Dist: 5.486 ± 3.162
+Epoch 110 / 250 | Reward: 8160.7 ± 21.0 | Energy: 0.075 ± 0.207 | k-NN Dist: 4.578 ± 1.735
+Epoch 111 / 250 | Reward: 8150.6 ± 25.7 | Energy: 0.064 ± 0.175 | k-NN Dist: 4.519 ± 3.359
+Epoch 112 / 250 | Reward: 6700.7 ± 2150.3 | Energy: 0.058 ± 0.187 | k-NN Dist: 5.687 ± 15.837
+Epoch 113 / 250 | Reward: 8214.3 ± 43.4 | Energy: 0.082 ± 0.181 | k-NN Dist: 4.485 ± 1.424
+Epoch 114 / 250 | Reward: 6458.8 ± 2446.4 | Energy: 0.077 ± 0.195 | k-NN Dist: 5.837 ± 4.093
+Epoch 115 / 250 | Reward: 5605.8 ± 3518.3 | Energy: 0.052 ± 0.168 | k-NN Dist: 7.926 ± 8.584
+Epoch 116 / 250 | Reward: 8154.6 ± 24.0 | Energy: 0.093 ± 0.209 | k-NN Dist: 5.306 ± 2.206
+Epoch 117 / 250 | Reward: 5997.1 ± 3078.5 | Energy: 0.121 ± 0.224 | k-NN Dist: 5.437 ± 3.188
+Epoch 118 / 250 | Reward: 8183.5 ± 29.4 | Energy: 0.058 ± 0.182 | k-NN Dist: 5.342 ± 2.573
+Epoch 119 / 250 | Reward: 8232.9 ± 41.3 | Energy: 0.057 ± 0.168 | k-NN Dist: 5.410 ± 2.740
+Epoch 120 / 250 | Reward: 8193.1 ± 45.3 | Energy: 0.041 ± 0.165 | k-NN Dist: 5.156 ± 2.521
+Epoch 121 / 250 | Reward: 7715.4 ± 663.7 | Energy: 0.052 ± 0.171 | k-NN Dist: 6.445 ± 36.861
+Epoch 122 / 250 | Reward: 5639.3 ± 3616.7 | Energy: 0.060 ± 0.186 | k-NN Dist: 7.120 ± 5.098
+Epoch 123 / 250 | Reward: 8163.7 ± 12.9 | Energy: 0.077 ± 0.210 | k-NN Dist: 5.005 ± 4.972
+Epoch 124 / 250 | Reward: 8191.5 ± 29.2 | Energy: 0.066 ± 0.188 | k-NN Dist: 5.062 ± 2.108
+Epoch 125 / 250 | Reward: 8189.7 ± 19.0 | Energy: 0.048 ± 0.179 | k-NN Dist: 5.296 ± 4.570
+Epoch 126 / 250 | Reward: 8203.4 ± 22.9 | Energy: 0.052 ± 0.172 | k-NN Dist: 8.363 ± 105.274
+Epoch 127 / 250 | Reward: 8188.7 ± 21.9 | Energy: 0.048 ± 0.178 | k-NN Dist: 4.577 ± 1.791
+Epoch 128 / 250 | Reward: 8215.5 ± 19.2 | Energy: 0.058 ± 0.186 | k-NN Dist: 5.431 ± 2.425
+Epoch 129 / 250 | Reward: 6543.5 ± 2365.3 | Energy: 0.049 ± 0.163 | k-NN Dist: 5.802 ± 6.807
+Epoch 130 / 250 | Reward: 8166.1 ± 16.6 | Energy: 0.053 ± 0.181 | k-NN Dist: 4.961 ± 3.578
+Epoch 131 / 250 | Reward: 6727.6 ± 2024.3 | Energy: 0.052 ± 0.176 | k-NN Dist: 5.672 ± 13.655
+Epoch 132 / 250 | Reward: 8222.8 ± 16.2 | Energy: 0.071 ± 0.194 | k-NN Dist: 4.692 ± 1.585
+Epoch 133 / 250 | Reward: 8176.4 ± 11.7 | Energy: 0.037 ± 0.168 | k-NN Dist: 4.091 ± 1.390
+  --> Checkpoint Saved (New Best Composite Score!)
+Epoch 134 / 250 | Reward: 6856.5 ± 1892.5 | Energy: 0.051 ± 0.180 | k-NN Dist: 5.625 ± 4.952
+Epoch 135 / 250 | Reward: 8171.5 ± 29.2 | Energy: 0.075 ± 0.187 | k-NN Dist: 4.984 ± 4.581
+Epoch 136 / 250 | Reward: 8190.5 ± 31.5 | Energy: 0.052 ± 0.185 | k-NN Dist: 4.632 ± 1.545
+Epoch 137 / 250 | Reward: 8151.1 ± 31.8 | Energy: 0.049 ± 0.172 | k-NN Dist: 5.125 ± 2.236
+Epoch 138 / 250 | Reward: 6294.5 ± 2622.5 | Energy: 0.045 ± 0.165 | k-NN Dist: 6.056 ± 5.296
+Epoch 139 / 250 | Reward: 6083.6 ± 2943.1 | Energy: 0.061 ± 0.186 | k-NN Dist: 6.359 ± 7.899
+Epoch 140 / 250 | Reward: 8140.5 ± 23.2 | Energy: 0.053 ± 0.182 | k-NN Dist: 4.413 ± 1.675
+Epoch 141 / 250 | Reward: 8159.6 ± 15.6 | Energy: 0.043 ± 0.177 | k-NN Dist: 5.064 ± 2.054
+Epoch 142 / 250 | Reward: 8184.5 ± 7.5 | Energy: 0.061 ± 0.186 | k-NN Dist: 4.997 ± 2.186
+Epoch 143 / 250 | Reward: 8162.7 ± 28.6 | Energy: 0.051 ± 0.166 | k-NN Dist: 5.562 ± 4.614
+Epoch 144 / 250 | Reward: 8156.4 ± 9.5 | Energy: 0.054 ± 0.185 | k-NN Dist: 4.326 ± 1.581
+Epoch 145 / 250 | Reward: 8158.6 ± 15.0 | Energy: 0.081 ± 0.195 | k-NN Dist: 4.482 ± 2.010
+Epoch 146 / 250 | Reward: 8203.2 ± 10.2 | Energy: 0.063 ± 0.178 | k-NN Dist: 4.930 ± 1.859
+Epoch 147 / 250 | Reward: 8160.4 ± 35.6 | Energy: 0.050 ± 0.183 | k-NN Dist: 5.030 ± 2.502
+Epoch 148 / 250 | Reward: 8200.3 ± 17.2 | Energy: 0.045 ± 0.165 | k-NN Dist: 4.946 ± 2.175
+Epoch 149 / 250 | Reward: 8221.3 ± 14.8 | Energy: 0.053 ± 0.182 | k-NN Dist: 4.840 ± 1.625
+Epoch 150 / 250 | Reward: 8203.1 ± 9.3 | Energy: 0.069 ± 0.186 | k-NN Dist: 9.096 ± 188.841
+Epoch 151 / 250 | Reward: 8214.6 ± 18.4 | Energy: 0.036 ± 0.162 | k-NN Dist: 5.488 ± 2.575
+Epoch 152 / 250 | Reward: 8222.4 ± 39.2 | Energy: 0.044 ± 0.171 | k-NN Dist: 4.657 ± 1.702
+Epoch 153 / 250 | Reward: 8187.5 ± 28.0 | Energy: 0.066 ± 0.179 | k-NN Dist: 4.774 ± 1.821
+Epoch 154 / 250 | Reward: 8196.6 ± 36.4 | Energy: 0.046 ± 0.173 | k-NN Dist: 5.022 ± 2.012
+Epoch 155 / 250 | Reward: 8121.1 ± 18.7 | Energy: 0.061 ± 0.181 | k-NN Dist: 5.414 ± 3.736
+Epoch 156 / 250 | Reward: 8209.3 ± 29.5 | Energy: 0.066 ± 0.191 | k-NN Dist: 4.964 ± 1.872
+Epoch 157 / 250 | Reward: 8156.9 ± 33.0 | Energy: 0.039 ± 0.163 | k-NN Dist: 4.857 ± 2.855
+Epoch 158 / 250 | Reward: 8132.3 ± 50.4 | Energy: 0.083 ± 0.215 | k-NN Dist: 5.192 ± 2.742
+Epoch 159 / 250 | Reward: 7473.7 ± 986.4 | Energy: 0.050 ± 0.175 | k-NN Dist: 6.478 ± 18.120
+Epoch 160 / 250 | Reward: 6604.4 ± 2227.1 | Energy: 0.050 ± 0.174 | k-NN Dist: 6.303 ± 19.264
+Epoch 161 / 250 | Reward: 8209.0 ± 29.2 | Energy: 0.048 ± 0.175 | k-NN Dist: 5.296 ± 2.950
+Epoch 162 / 250 | Reward: 7027.7 ± 1694.1 | Energy: 0.076 ± 0.187 | k-NN Dist: 6.121 ± 9.413
+Epoch 163 / 250 | Reward: 8226.0 ± 22.4 | Energy: 0.093 ± 0.224 | k-NN Dist: 5.301 ± 2.287
+Epoch 164 / 250 | Reward: 8166.5 ± 14.7 | Energy: 0.043 ± 0.171 | k-NN Dist: 4.840 ± 2.099
+Epoch 165 / 250 | Reward: 7142.3 ± 1518.3 | Energy: 0.048 ± 0.165 | k-NN Dist: 5.298 ± 4.947
+Epoch 166 / 250 | Reward: 7406.8 ± 1182.2 | Energy: 0.043 ± 0.169 | k-NN Dist: 5.871 ± 4.743
+Epoch 167 / 250 | Reward: 8260.1 ± 53.9 | Energy: 0.061 ± 0.201 | k-NN Dist: 5.038 ± 1.728
+Epoch 168 / 250 | Reward: 8146.3 ± 11.5 | Energy: 0.057 ± 0.167 | k-NN Dist: 4.273 ± 1.423
+Epoch 169 / 250 | Reward: 7271.4 ± 1339.7 | Energy: 0.063 ± 0.170 | k-NN Dist: 5.119 ± 2.963
+Epoch 170 / 250 | Reward: 8169.6 ± 27.1 | Energy: 0.070 ± 0.191 | k-NN Dist: 5.129 ± 2.495
+Epoch 171 / 250 | Reward: 8193.3 ± 58.6 | Energy: 0.055 ± 0.176 | k-NN Dist: 4.885 ± 4.524
+Epoch 172 / 250 | Reward: 8161.4 ± 26.1 | Energy: 0.049 ± 0.174 | k-NN Dist: 5.497 ± 2.636
+Epoch 173 / 250 | Reward: 6500.1 ± 2396.3 | Energy: 0.042 ± 0.170 | k-NN Dist: 7.091 ± 14.174
+Epoch 174 / 250 | Reward: 8189.7 ± 5.5 | Energy: 0.056 ± 0.177 | k-NN Dist: 4.765 ± 1.805
+Epoch 175 / 250 | Reward: 6595.3 ± 2242.6 | Energy: 0.045 ± 0.168 | k-NN Dist: 5.095 ± 3.173
+Epoch 176 / 250 | Reward: 6959.6 ± 1247.5 | Energy: 0.046 ± 0.174 | k-NN Dist: 6.603 ± 16.236
+Epoch 177 / 250 | Reward: 8187.1 ± 40.6 | Energy: 0.058 ± 0.182 | k-NN Dist: 5.056 ± 2.475
+Epoch 178 / 250 | Reward: 8182.2 ± 15.0 | Energy: 0.044 ± 0.171 | k-NN Dist: 4.360 ± 1.646
+Epoch 179 / 250 | Reward: 6179.1 ± 2938.3 | Energy: 0.065 ± 0.187 | k-NN Dist: 6.740 ± 5.670
+Epoch 180 / 250 | Reward: 6712.5 ± 2170.6 | Energy: 0.066 ± 0.195 | k-NN Dist: 6.074 ± 9.285
+Epoch 181 / 250 | Reward: 8158.3 ± 26.9 | Energy: 0.051 ± 0.173 | k-NN Dist: 5.093 ± 2.106
+Epoch 182 / 250 | Reward: 7851.9 ± 449.8 | Energy: 0.039 ± 0.164 | k-NN Dist: 5.144 ± 3.293
+Epoch 183 / 250 | Reward: 8183.8 ± 40.0 | Energy: 0.056 ± 0.176 | k-NN Dist: 4.542 ± 1.644
+Epoch 184 / 250 | Reward: 8196.3 ± 28.1 | Energy: 0.044 ± 0.170 | k-NN Dist: 4.734 ± 2.167
+Epoch 185 / 250 | Reward: 8189.2 ± 15.4 | Energy: 0.053 ± 0.172 | k-NN Dist: 5.533 ± 3.110
+Epoch 186 / 250 | Reward: 8198.1 ± 32.5 | Energy: 0.042 ± 0.160 | k-NN Dist: 4.931 ± 5.730
+Epoch 187 / 250 | Reward: 8171.7 ± 5.2 | Energy: 0.052 ± 0.183 | k-NN Dist: 4.758 ± 2.071
+Epoch 188 / 250 | Reward: 8164.4 ± 11.0 | Energy: 0.036 ± 0.162 | k-NN Dist: 4.597 ± 1.670
+Epoch 189 / 250 | Reward: 8187.2 ± 26.3 | Energy: 0.080 ± 0.199 | k-NN Dist: 4.792 ± 1.741
+Epoch 190 / 250 | Reward: 5624.5 ± 3599.2 | Energy: 0.068 ± 0.188 | k-NN Dist: 5.048 ± 3.135
+Epoch 191 / 250 | Reward: 8160.8 ± 19.2 | Energy: 0.079 ± 0.190 | k-NN Dist: 4.493 ± 1.658
+Epoch 192 / 250 | Reward: 6090.4 ± 2961.9 | Energy: 0.063 ± 0.185 | k-NN Dist: 6.073 ± 4.047
+Epoch 193 / 250 | Reward: 8174.9 ± 15.1 | Energy: 0.062 ± 0.195 | k-NN Dist: 4.745 ± 1.698
+Epoch 194 / 250 | Reward: 8188.5 ± 30.1 | Energy: 0.076 ± 0.189 | k-NN Dist: 5.518 ± 2.819
+Epoch 195 / 250 | Reward: 8178.2 ± 12.2 | Energy: 0.051 ± 0.170 | k-NN Dist: 4.873 ± 2.056
+Epoch 196 / 250 | Reward: 8183.0 ± 13.8 | Energy: 0.066 ± 0.203 | k-NN Dist: 4.838 ± 3.223
+Epoch 197 / 250 | Reward: 8208.2 ± 28.2 | Energy: 0.037 ± 0.163 | k-NN Dist: 5.239 ± 7.713
+Epoch 198 / 250 | Reward: 5918.4 ± 3202.9 | Energy: 0.043 ± 0.172 | k-NN Dist: 6.613 ± 6.485
+Epoch 199 / 250 | Reward: 3398.7 ± 3386.8 | Energy: 0.052 ± 0.182 | k-NN Dist: 9449683.462 ± 203760288.927
+Epoch 200 / 250 | Reward: 8156.0 ± 26.0 | Energy: 0.034 ± 0.158 | k-NN Dist: 4.831 ± 2.570
+Epoch 201 / 250 | Reward: 8168.4 ± 5.8 | Energy: 0.040 ± 0.165 | k-NN Dist: 5.121 ± 2.466
+Epoch 202 / 250 | Reward: 8196.3 ± 47.2 | Energy: 0.045 ± 0.181 | k-NN Dist: 4.978 ± 3.147
+Epoch 203 / 250 | Reward: 8191.1 ± 35.9 | Energy: 0.061 ± 0.195 | k-NN Dist: 4.622 ± 1.651
+Epoch 204 / 250 | Reward: 6782.6 ± 1040.3 | Energy: 0.044 ± 0.177 | k-NN Dist: 6.462 ± 21.742
+Epoch 205 / 250 | Reward: 8108.1 ± 10.6 | Energy: 0.076 ± 0.211 | k-NN Dist: 4.312 ± 2.130
+Epoch 206 / 250 | Reward: 7495.6 ± 983.9 | Energy: 0.049 ± 0.175 | k-NN Dist: 5.446 ± 5.299
+Epoch 207 / 250 | Reward: 6023.1 ± 3076.6 | Energy: 0.040 ± 0.170 | k-NN Dist: 5.583 ± 7.137
+Epoch 208 / 250 | Reward: 8200.4 ± 31.3 | Energy: 0.062 ± 0.183 | k-NN Dist: 5.074 ± 2.100
+Epoch 209 / 250 | Reward: 8227.5 ± 7.5 | Energy: 0.046 ± 0.171 | k-NN Dist: 5.456 ± 2.769
+Epoch 210 / 250 | Reward: 8164.4 ± 18.3 | Energy: 0.060 ± 0.171 | k-NN Dist: 5.396 ± 3.491
+Epoch 211 / 250 | Reward: 8187.4 ± 19.5 | Energy: 0.039 ± 0.161 | k-NN Dist: 4.818 ± 2.257
+Epoch 212 / 250 | Reward: 7371.1 ± 555.0 | Energy: 0.070 ± 0.199 | k-NN Dist: 8.559 ± 23.436
+Epoch 213 / 250 | Reward: 8116.7 ± 51.3 | Energy: 0.052 ± 0.176 | k-NN Dist: 4.545 ± 3.215
+Epoch 214 / 250 | Reward: 8220.2 ± 34.8 | Energy: 0.036 ± 0.161 | k-NN Dist: 5.316 ± 2.154
+Epoch 215 / 250 | Reward: 8180.0 ± 10.1 | Energy: 0.082 ± 0.197 | k-NN Dist: 4.658 ± 1.727
+Epoch 216 / 250 | Reward: 8210.0 ± 65.3 | Energy: 0.052 ± 0.180 | k-NN Dist: 5.184 ± 2.343
+Epoch 217 / 250 | Reward: 7710.9 ± 642.8 | Energy: 0.050 ± 0.184 | k-NN Dist: 5.747 ± 5.654
+Epoch 218 / 250 | Reward: 8192.4 ± 31.8 | Energy: 0.052 ± 0.171 | k-NN Dist: 4.729 ± 1.686
+Epoch 219 / 250 | Reward: 8162.1 ± 13.1 | Energy: 0.051 ± 0.169 | k-NN Dist: 5.924 ± 23.440
+Epoch 220 / 250 | Reward: 8215.8 ± 11.3 | Energy: 0.058 ± 0.178 | k-NN Dist: 5.188 ± 2.135
+Epoch 221 / 250 | Reward: 8189.2 ± 33.7 | Energy: 0.097 ± 0.209 | k-NN Dist: 4.584 ± 1.849
+Epoch 222 / 250 | Reward: 8221.8 ± 42.1 | Energy: 0.065 ± 0.202 | k-NN Dist: 7.214 ± 6.520
+Epoch 223 / 250 | Reward: 8196.1 ± 18.3 | Energy: 0.052 ± 0.170 | k-NN Dist: 5.346 ± 2.294
+Epoch 224 / 250 | Reward: 6000.4 ± 1553.3 | Energy: 0.060 ± 0.182 | k-NN Dist: 7.333 ± 17.329
+Epoch 225 / 250 | Reward: 5672.0 ± 3583.9 | Energy: 0.054 ± 0.180 | k-NN Dist: 6.505 ± 5.087
+Epoch 226 / 250 | Reward: 8199.6 ± 23.1 | Energy: 0.063 ± 0.181 | k-NN Dist: 4.951 ± 1.993
+Epoch 227 / 250 | Reward: 8193.3 ± 16.0 | Energy: 0.059 ± 0.165 | k-NN Dist: 5.974 ± 7.941
+Epoch 228 / 250 | Reward: 8175.7 ± 26.7 | Energy: 0.049 ± 0.174 | k-NN Dist: 4.741 ± 1.853
+Epoch 229 / 250 | Reward: 5125.8 ± 3144.0 | Energy: 0.070 ± 0.183 | k-NN Dist: 7.463 ± 5.640
+Epoch 230 / 250 | Reward: 8194.2 ± 35.9 | Energy: 0.038 ± 0.163 | k-NN Dist: 5.313 ± 2.341
+Epoch 231 / 250 | Reward: 8206.1 ± 15.6 | Energy: 0.058 ± 0.185 | k-NN Dist: 4.841 ± 1.832
+Epoch 232 / 250 | Reward: 6464.8 ± 2484.5 | Energy: 0.051 ± 0.170 | k-NN Dist: 6.267 ± 20.635
+Epoch 233 / 250 | Reward: 8148.0 ± 31.1 | Energy: 0.064 ± 0.189 | k-NN Dist: 4.591 ± 1.586
+Epoch 234 / 250 | Reward: 5185.5 ± 2131.6 | Energy: 0.067 ± 0.198 | k-NN Dist: 6.976 ± 22.181
+Epoch 235 / 250 | Reward: 8175.2 ± 30.9 | Energy: 0.063 ± 0.191 | k-NN Dist: 5.747 ± 3.231
+Epoch 236 / 250 | Reward: 8154.5 ± 15.9 | Energy: 0.077 ± 0.197 | k-NN Dist: 5.058 ± 2.314
+Epoch 237 / 250 | Reward: 4649.3 ± 3175.5 | Energy: 0.037 ± 0.163 | k-NN Dist: 8.856 ± 10.012
+Epoch 238 / 250 | Reward: 8206.2 ± 25.9 | Energy: 0.063 ± 0.184 | k-NN Dist: 4.329 ± 1.595
+Epoch 239 / 250 | Reward: 7082.3 ± 1549.6 | Energy: 0.043 ± 0.167 | k-NN Dist: 5.233 ± 3.886
+Epoch 240 / 250 | Reward: 7251.3 ± 1305.8 | Energy: 0.056 ± 0.180 | k-NN Dist: 5.241 ± 3.580
+Epoch 241 / 250 | Reward: 8186.4 ± 31.9 | Energy: 0.052 ± 0.181 | k-NN Dist: 4.584 ± 1.677
+Epoch 242 / 250 | Reward: 8159.5 ± 16.4 | Energy: 0.065 ± 0.194 | k-NN Dist: 4.768 ± 1.634
+Epoch 243 / 250 | Reward: 8182.7 ± 17.2 | Energy: 0.048 ± 0.170 | k-NN Dist: 4.695 ± 1.904
+Epoch 244 / 250 | Reward: 8214.6 ± 56.4 | Energy: 0.067 ± 0.171 | k-NN Dist: 5.224 ± 3.400
+Epoch 245 / 250 | Reward: 7978.5 ± 352.6 | Energy: 0.043 ± 0.169 | k-NN Dist: 5.121 ± 3.610
+Epoch 246 / 250 | Reward: 6068.3 ± 3001.6 | Energy: 0.056 ± 0.181 | k-NN Dist: 6.025 ± 5.092
+Epoch 247 / 250 | Reward: 6051.4 ± 2956.7 | Energy: 0.043 ± 0.174 | k-NN Dist: 5.291 ± 3.708
+Epoch 248 / 250 | Reward: 8166.6 ± 14.7 | Energy: 0.042 ± 0.167 | k-NN Dist: 5.006 ± 2.449
+Epoch 249 / 250 | Reward: 7757.4 ± 564.1 | Energy: 0.061 ± 0.189 | k-NN Dist: 5.398 ± 12.654
+Epoch 250 / 250 | Reward: 5901.5 ± 3202.5 | Energy: 0.093 ± 0.220 | k-NN Dist: 5.068 ± 3.585
+--> Phase Complete | Final Train Loss: 0.000187 | Final Validation Loss: 0.000616
+
+
+[COMPLETE] Optimization finished. Exporting structural metrics plots...
+
+==================== FINAL POLICY VERIFICATION ====================
+Final Reward:          8199.30 ± 42.56
+Final Manifold Energy: 0.0374 ± 0.1679
+Final k-NN Distance:   5.083 ± 2.445
+===================================================================
+
+Spawning video environment for Humanoid-v5...
+Saved video to behavior_cloning_CONTROL.mp4 | Total Reward: 8192.49
+(il-lab) darkdragon@MacBook-Pro-361 pgss-L4R-project % 
