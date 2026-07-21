@@ -237,16 +237,19 @@ def train_bc_modular(policy, lyapunov_net, energy_critic, nn_detector, train_dat
 
             # --- Policy update ---
             pred_t = policy(o_t)
-            loss = mse(pred_t, a_t)
+            loss_bc = mse(pred_t, a_t)
 
-            pred_next = None
+            loss_two_step = 0.0
             if use_two_step:
                 pred_next = policy(o_next)
-                loss += config.TWO_STEP_LOSS_WEIGHT * mse(pred_next, a_next)
+                # Two-step lookahead loss: penalizes action error on s_{t+1}
+                loss_two_step = config.TWO_STEP_LOSS_WEIGHT * mse(pred_next, a_next)
+
+            loss = loss_bc + loss_two_step
 
             target_decay = None
             if use_lyapunov:
-                pred_next_for_v = pred_next if pred_next is not None else policy(o_next)
+                pred_next_for_v = policy(o_next) if not use_two_step else pred_next
                 v_t = lyapunov_net(o_t, pred_t)
                 v_next = lyapunov_net(o_next, pred_next_for_v)
                 target_decay = config.LYAPUNOV_ALPHA_DECAY * torch.norm(o_t, dim=-1, keepdim=True)
@@ -420,12 +423,28 @@ if __name__ == "__main__":
         'energy_mean': [], 'energy_std': [],
         'knn_mean': [], 'knn_std': []
     }
+    # Reset global score before starting training
+    best_composite_score = -float("inf")
 
     for iteration in range(DAGGER_ITERATIONS):
         if DAGGER_ITERATIONS > 1:
             print(f"\n==========================================")
             print(f"  LAUNCHING: DAgger Phase {iteration+1}/{DAGGER_ITERATIONS}")
             print(f"==========================================")
+
+        # -------------------------------------------------------------------------
+        # FIX 1: RE-INITIALIZE MODEL WEIGHTS & SCORE TRACKER PER DAGGER ITERATION
+        # -------------------------------------------------------------------------
+        best_composite_score = -float("inf")  # Reset checkpoint baseline for this phase
+        
+        policy = BCPolicy(o_raw.shape[1], a_raw.shape[1]).to(config.DEVICE)
+        if use_lyapunov_mode:
+            lyapunov_net = LyapunovNetwork(o_raw.shape[1], a_raw.shape[1]).to(config.DEVICE)
+            lyapunov_net = pretrain_lyapunov_network(
+                lyapunov_net, train_data['obs'], train_data['acts'], 
+                obs_mean, obs_std, act_mean, act_std, 
+                epochs=config.CRITIC_PRETRAIN_EPOCHS
+            )
 
         # Off-by-one correction: beta reaches 0.0 on final iteration
         if DAGGER_ITERATIONS > 1:
