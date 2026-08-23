@@ -1,7 +1,0 @@
-control runs
-
-Post-IL performance:
-Mean expert return:  
-Mean learned return: 
-
-Post-RL performance:
