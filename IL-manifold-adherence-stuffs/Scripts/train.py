@@ -1,26 +1,10 @@
-# HOW TO USE THIS SCRIPT:
-# - - - - - - - - - - - -
-# To run the training, first, put the IL-manifold-adherence folder into another folder, as
-# some of the packages export videos/graphs into the external directory (the one outside the current one)
-#
-# Then, create a new terminal in VS Code or Jupyter Notebook and run this file, train.py, and then follow it with
-# either: control, dagger, two_step_only, or some other experimental methods (lyapunov_only, lyapunov_dagger_two_step, lyapunov_dagger)
-#
-# EX: python IL-manfiold-adherence-SJL/train.py control
-# EX 2: python IL-manfiold-adherence-SJL/train.py dagger
-#
-# Most of, if not all hyperparams are in the config.py file.
-#
-# Also, if you change the environment (down in the __name__ == __main__: or something),
-# make sure you delete the energy_critic_expert_cache.pt file and run a control run up until it says the energy critic
-# has been cached. This is so it's trained on the right manifold every single time.
-
 import os
 import sys
 
 import numpy as np
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
 import gymnasium as gym
@@ -145,7 +129,7 @@ def train_energy_critic(obs_raw, acts_raw, obs_mean, obs_std, act_mean, act_std,
 
 
 def pretrain_lyapunov_network(lyapunov_net, obs_raw, acts_raw, obs_mean, obs_std, act_mean, act_std, epochs=30):
-    """Pre-trains Lyapunov network on expert trajectories so V(s, a) starts with a valid manifold energy landscape."""
+    """Pre-trains Lyapunov Safety Critic on expert trajectories with contrastive margin loss."""
     print("\n[INFO] Pre-training Lyapunov Safety Network...")
     obs_norm = (obs_raw - obs_mean) / obs_std
     acts_norm = (acts_raw - act_mean) / act_std
@@ -163,20 +147,21 @@ def pretrain_lyapunov_network(lyapunov_net, obs_raw, acts_raw, obs_mean, obs_std
         for obs_b, act_b in loader:
             obs_b, act_b = obs_b.to(config.DEVICE), act_b.to(config.DEVICE)
 
-            # 1. Expert state-action pairs mapped to near-zero energy
+            # 1. Zero energy target on expert manifold
             v_expert = lyapunov_net(obs_b, act_b)
             loss_expert = torch.square(v_expert).mean()
 
-            # 2. Contrastive margin for off-manifold actions
+            # 2. Contrastive margin for noise-perturbed actions
             noise = torch.randn_like(act_b) * config.LYAPUNOV_NOISE_SCALE
             fake_act = torch.clamp(act_b + noise, config.ACTION_MIN, config.ACTION_MAX)
             v_fake = lyapunov_net(obs_b, fake_act)
-            loss_contrastive = torch.relu(config.LYAPUNOV_MARGIN + v_expert - v_fake).mean()
+            loss_contrastive = torch.square(F.relu(config.LYAPUNOV_MARGIN - v_fake)).mean()
 
-            loss = loss_expert + loss_contrastive
+            loss = loss_expert + config.LYAPUNOV_CONTRASTIVE_WEIGHT * loss_contrastive
 
             optimizer.zero_grad()
             loss.backward()
+            torch.nn.utils.clip_grad_norm_(lyapunov_net.parameters(), max_norm=config.CRITIC_GRAD_CLIP)
             optimizer.step()
             total_loss += loss.item()
 
@@ -235,11 +220,36 @@ def train_bc_modular(policy, lyapunov_net, energy_critic, nn_detector, train_dat
             o_t, a_t = o_t.to(config.DEVICE), a_t.to(config.DEVICE)
             o_next, a_next = o_next.to(config.DEVICE), a_next.to(config.DEVICE)
 
-            # --- Initialize variables before updates ---
-            pred_next = None
-            target_decay = None
+            # ====================================================================
+            # 1. Update Lyapunov Critic Network (V_phi)
+            # ====================================================================
+            if use_lyapunov:
+                lyap_optimizer.zero_grad()
 
-            # --- Policy update ---
+                # A. Temporal Dissipation Loss: V(s_{t+1}, a_{t+1}) <= (1 - alpha) * V(s_t, a_t)
+                v_curr = lyapunov_net(o_t, a_t)
+                v_next = lyapunov_net(o_next, a_next)
+                dissipation_violation = F.relu(v_next - (1.0 - config.LYAPUNOV_ALPHA_DECAY) * v_curr)
+                loss_dissipation = torch.mean(torch.square(dissipation_violation))
+
+                # B. Contrastive Margin Loss on OOD Perturbed Actions
+                noise = torch.randn_like(a_t) * config.LYAPUNOV_NOISE_SCALE
+                a_ood = torch.clamp(a_t + noise, config.ACTION_MIN, config.ACTION_MAX)
+                v_ood = lyapunov_net(o_t, a_ood)
+                margin_violation = F.relu(config.LYAPUNOV_MARGIN - v_ood)
+                loss_margin = torch.mean(torch.square(margin_violation))
+
+                # Total Critic Loss
+                loss_lyap_critic = loss_dissipation + config.LYAPUNOV_CONTRASTIVE_WEIGHT * loss_margin
+                loss_lyap_critic.backward()
+                torch.nn.utils.clip_grad_norm_(lyapunov_net.parameters(), max_norm=config.CRITIC_GRAD_CLIP)
+                lyap_optimizer.step()
+
+            # ====================================================================
+            # 2. Update Policy Network (pi_theta)
+            # ====================================================================
+            optimizer.zero_grad()
+
             pred_t = policy(o_t)
             loss_bc = mse(pred_t, a_t)
 
@@ -248,56 +258,19 @@ def train_bc_modular(policy, lyapunov_net, energy_critic, nn_detector, train_dat
                 pred_next = policy(o_next)
                 loss_two_step = config.TWO_STEP_LOSS_WEIGHT * mse(pred_next, a_next)
 
-            loss = loss_bc + loss_two_step
-
+            loss_lyap_reg = 0.0
             if use_lyapunov:
-                pred_next_for_v = pred_next if pred_next is not None else policy(o_next)
-                v_t = lyapunov_net(o_t, pred_t)
-                v_next = lyapunov_net(o_next, pred_next_for_v)
-                
-                # Compute target_decay once here so it is available everywhere
-                target_decay = config.LYAPUNOV_ALPHA_DECAY * torch.norm(o_t, dim=-1, keepdim=True)
-                
-                # Direct Energy Penalty
-                energy_penalty = v_t.mean() + v_next.mean()
-                
-                # Strict Decay Violation
-                decay_threshold = (1.0 - config.LYAPUNOV_ALPHA_DECAY) * v_t.detach()
-                drift_violation = torch.relu(v_next - decay_threshold).mean()
-                
-                loss += config.LYAPUNOV_LOSS_WEIGHT * (energy_penalty + drift_violation)
+                # Lookahead Lyapunov Regularization on Predicted Next State Action
+                pred_next_for_v = policy(o_next)
+                v_next_pred = lyapunov_net(o_next, pred_next_for_v)
+                loss_lyap_reg = config.LYAPUNOV_LOSS_WEIGHT * torch.mean(v_next_pred)
 
-            optimizer.zero_grad()
-            if use_lyapunov:
-                lyap_optimizer.zero_grad()
-            loss.backward()
+            loss_policy = loss_bc + loss_two_step + loss_lyap_reg
+            loss_policy.backward()
+            torch.nn.utils.clip_grad_norm_(policy.parameters(), max_norm=0.5)
             optimizer.step()
-            # In train_bc_modular:
+
             epoch_train_losses.append(loss_bc.item())
-
-            # --- Lyapunov network's own update ---
-            if use_lyapunov:
-                with torch.no_grad():
-                    pred_t_detached = policy(o_t)
-                    pred_next_detached = policy(o_next)
-                
-                v_t2 = lyapunov_net(o_t, pred_t_detached)
-                v_next2 = lyapunov_net(o_next, pred_next_detached)
-                
-                # Uses target_decay defined above safely
-                violation_loss = torch.relu((v_next2 - v_t2) + target_decay).mean()
-
-                noise = torch.randn_like(a_t) * config.LYAPUNOV_NOISE_SCALE
-                fake_a_t = torch.clamp(a_t + noise, config.ACTION_MIN, config.ACTION_MAX)
-                v_expert = lyapunov_net(o_t, a_t)
-                v_perturbed = lyapunov_net(o_t, fake_a_t)
-                contrastive_loss = torch.relu(config.LYAPUNOV_MARGIN + v_expert - v_perturbed).mean()
-
-                lyap_loss = violation_loss + config.LYAPUNOV_CONTRASTIVE_WEIGHT * contrastive_loss
-
-                lyap_optimizer.zero_grad()
-                lyap_loss.backward()
-                lyap_optimizer.step()
 
         # --- VALIDATION/LOSS EXTRACTION PHASE ---
         policy.eval()
@@ -396,7 +369,6 @@ if __name__ == "__main__":
         env, expert, config.NUM_VAL_TRAJECTORIES, desc="Val Expert Rollouts", seed_offset=VAL_SEED_OFFSET
     )
 
-    # --- AFTER (FIX 1) ---
     obs_mean = o_raw.mean(axis=0)
     act_mean = a_raw.mean(axis=0)
 
@@ -405,9 +377,6 @@ if __name__ == "__main__":
     act_std = np.maximum(a_raw.std(axis=0), 1e-2)
     scalar_maps = (obs_mean, obs_std, act_mean, act_std)
 
-    # =========================================================================
-    # FIX 1: INITIALIZE NN_DETECTOR STRICTLY ON NORMALIZED EXPERT TRAJECTORIES
-    # =========================================================================
     print("\n[INFO] Spawning k-NN Manifold Reference Engine...")
     train_obs_norm_initial = (o_raw - obs_mean) / obs_std
     nn_detector = NearestNeighbors(n_neighbors=5, algorithm='brute', n_jobs=-1)
@@ -438,7 +407,6 @@ if __name__ == "__main__":
         'energy_mean': [], 'energy_std': [],
         'knn_mean': [], 'knn_std': []
     }
-    # Reset global score before starting training
     best_composite_score = -float("inf")
 
     for iteration in range(DAGGER_ITERATIONS):
@@ -447,10 +415,7 @@ if __name__ == "__main__":
             print(f"  LAUNCHING: DAgger Phase {iteration+1}/{DAGGER_ITERATIONS}")
             print(f"==========================================")
 
-        # -------------------------------------------------------------------------
-        # FIX 1: RE-INITIALIZE MODEL WEIGHTS & SCORE TRACKER PER DAGGER ITERATION
-        # -------------------------------------------------------------------------
-        best_composite_score = -float("inf")  # Reset checkpoint baseline for this phase
+        best_composite_score = -float("inf")
         
         policy = BCPolicy(o_raw.shape[1], a_raw.shape[1]).to(config.DEVICE)
         if use_lyapunov_mode:
@@ -461,7 +426,6 @@ if __name__ == "__main__":
                 epochs=config.CRITIC_PRETRAIN_EPOCHS
             )
 
-        # Off-by-one correction: beta reaches 0.0 on final iteration
         if DAGGER_ITERATIONS > 1:
             beta = max(0.0, 1.0 - (iteration / (DAGGER_ITERATIONS - 1)))
         else:
@@ -483,20 +447,14 @@ if __name__ == "__main__":
                 seed_offset=200_000 + iteration * 1_000,
             )
 
-            # =========================================================================
-            # FIX 2: FILTER DAGGER OUTLIERS ON NORMALIZED STATE SPACE (< 50.0 STDEV)
-            # =========================================================================
             no_norm = (no - obs_mean) / obs_std
-            valid_mask = np.linalg.norm(no_norm, axis=1) < 50.0  # Drops exploded terminal state vectors
+            valid_mask = np.linalg.norm(no_norm, axis=1) < 50.0
 
             train_data['obs'] = np.concatenate([train_data['obs'], no[valid_mask]], axis=0)
             train_data['acts'] = np.concatenate([train_data['acts'], na[valid_mask]], axis=0)
             train_data['n_obs'] = np.concatenate([train_data['n_obs'], nno[valid_mask]], axis=0)
             train_data['n_acts'] = np.concatenate([train_data['n_acts'], nna[valid_mask]], axis=0)
 
-            # =========================================================================
-            # FIX 3: RE-FIT KNN DETECTOR ON FULLY NORMALIZED EXPANDED DATASET
-            # =========================================================================
             current_train_norm = (train_data['obs'] - obs_mean) / obs_std
             nn_detector.fit(current_train_norm)
             print(f"[DAgger] Manifold Re-Mapped. New dataset size: {len(train_data['obs'])} steps.")

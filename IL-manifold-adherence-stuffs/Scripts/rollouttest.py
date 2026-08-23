@@ -3,6 +3,7 @@ import os
 import torch
 import numpy as np
 import gymnasium as gym
+import torch.nn as nn
 
 # Import model architecture and utilities from your main codebase
 from train import BCPolicy, NearestNeighbors, load_from_hub, TQC, config, utils
@@ -85,11 +86,44 @@ def main():
     nn_detector = NearestNeighbors(n_neighbors=5, algorithm='brute', n_jobs=-1)
     nn_detector.fit(train_obs_norm)
 
+    class SimpleBCPolicy(nn.Module):
+        def __init__(self, in_dim, out_dim, h1=256, h2=256):
+            super().__init__()
+            self.net = nn.Sequential(
+                nn.Linear(obs_dim, 256),
+                nn.Tanh(),
+                nn.Linear(256, 256),
+                nn.Tanh(),
+                nn.Linear(256, act_dim),
+            )
+
+        def forward(self, x):
+            return self.net(x)
+
     obs_dim = o_raw.shape[1]
     act_dim = a_raw.shape[1]
 
-    policy = BCPolicy(obs_dim, act_dim).to(device)
-    policy.load_state_dict(state_dict)
+    # 1. Inspect state dict keys from checkpoint
+    if isinstance(state_dict, dict) and "policy_state_dict" in state_dict:
+        raw_weights = state_dict["policy_state_dict"]
+    else:
+        raw_weights = state_dict
+
+    # 2. Check if checkpoint comes from legacy 'net' architecture or current 'network'
+    is_legacy_net = any(k.startswith("net.") for k in raw_weights.keys())
+
+    if is_legacy_net:
+        print("[INFO] Detected legacy/gridsearch architecture ('net'). Instantiating SimpleBCPolicy...")
+        # Infer layer sizes from weight tensors
+        h1_dim = raw_weights["net.0.weight"].shape[0]
+        h2_dim = raw_weights["net.2.weight"].shape[0]
+        policy = SimpleBCPolicy(obs_dim, act_dim, h1=h1_dim, h2=h2_dim).to(device)
+        policy.load_state_dict(raw_weights)
+    else:
+        print("[INFO] Detected standard architecture ('network'). Instantiating BCPolicy...")
+        policy = BCPolicy(obs_dim, act_dim).to(device)
+        policy.load_state_dict(raw_weights)
+
     policy.eval()
 
     print(f"\n[INFO] Running {args.episodes} rollout episodes...")

@@ -29,112 +29,116 @@ def record_bc_policy(policy, env_id, filename, obs_mean, obs_std):
 
 
 def collect_trajectories(env, expert, num_trajectories, desc="Expert Rollouts", seed_offset=0):
-    """
-    Collects (obs, act, next_obs, next_act) tuples from expert rollouts.
+    """Collects (obs, act, next_obs, next_act) tuples from expert rollouts."""
+    obs_list, act_list, next_obs_list, next_act_list = [], [], [], []
 
-    FIX: env.reset() previously had no `seed=`, so every mode invocation (CONTROL, DAGGER,
-    LYAPUNOV_ONLY, ...) got a different, uncontrolled initial-state sequence since each mode
-    is launched as a separate `python train.py <mode>` process. That adds uncontrolled variance
-    to cross-mode comparisons -- a mode "winning" could just mean it got a luckier draw of
-    initial states, not that it's actually better. Seeding per-trajectory index (but
-    deterministically, off config.SEED) makes data collection reproducible and comparable
-    across runs/modes while still varying across trajectories within a run.
-    """
-    obs_b, act_b, n_obs_b, n_act_b = [], [], [], []
-    for traj_idx in tqdm(range(num_trajectories), desc=desc):
-        obs, _ = env.reset(seed=config.SEED + seed_offset + traj_idx)
-        for _ in range(config.TRAJECTORY_LENGTH):
+    for i in tqdm(range(num_trajectories), desc=desc):
+        obs, _ = env.reset(seed=config.SEED + seed_offset + i)
+        done = False
+        step = 0
+
+        while not done and step < config.TRAJECTORY_LENGTH:
             action, _ = expert.predict(obs, deterministic=True)
-            next_obs, _, term, trunc, _ = env.step(action)
+            next_obs, reward, term, trunc, _ = env.step(action)
+            done = term or trunc
+
             next_action, _ = expert.predict(next_obs, deterministic=True)
 
-            obs_b.append(obs)
-            act_b.append(action)
-            n_obs_b.append(next_obs)
-            n_act_b.append(next_action)
+            obs_list.append(obs)
+            act_list.append(action)
+            next_obs_list.append(next_obs)
+            next_act_list.append(next_action)
 
             obs = next_obs
-            if term or trunc:
-                break
-    return np.array(obs_b), np.array(act_b), np.array(n_obs_b), np.array(n_act_b)
+            step += 1
+
+    return (
+        np.array(obs_list, dtype=np.float32),
+        np.array(act_list, dtype=np.float32),
+        np.array(next_obs_list, dtype=np.float32),
+        np.array(next_act_list, dtype=np.float32),
+    )
+
+
+def collect_dagger_data(policy, expert, env, beta, obs_mean, obs_std, num_episodes=5, seed_offset=200000):
+    """Collects DAgger interaction rollout data mixed with expert actions."""
+    policy.eval()
+    obs_list, act_list, next_obs_list, next_act_list = [], [], [], []
+
+    for ep in range(num_episodes):
+        obs, _ = env.reset(seed=config.SEED + seed_offset + ep)
+        done = False
+        step = 0
+
+        while not done and step < config.TRAJECTORY_LENGTH:
+            # Predict action from policy
+            obs_norm = (obs - obs_mean) / obs_std
+            obs_t = torch.tensor(obs_norm, dtype=torch.float32, device=config.DEVICE).unsqueeze(0)
+            with torch.no_grad():
+                pi_act = policy(obs_t).cpu().numpy()[0]
+
+            expert_act, _ = expert.predict(obs, deterministic=True)
+
+            # Beta probability of taking expert action in env
+            if np.random.rand() < beta:
+                env_act = expert_act
+            else:
+                env_act = pi_act
+
+            next_obs, reward, term, trunc, _ = env.step(env_act)
+            done = term or trunc
+
+            expert_next_act, _ = expert.predict(next_obs, deterministic=True)
+
+            # Store transition labeled with EXPERT action for dagger aggregation
+            obs_list.append(obs)
+            act_list.append(expert_act)
+            next_obs_list.append(next_obs)
+            next_act_list.append(expert_next_act)
+
+            obs = next_obs
+            step += 1
+
+    return (
+        np.array(obs_list, dtype=np.float32),
+        np.array(act_list, dtype=np.float32),
+        np.array(next_obs_list, dtype=np.float32),
+        np.array(next_act_list, dtype=np.float32),
+    )
 
 
 def evaluate_policy_with_manifold_tracking(policy, env, nn_detector, obs_mean, obs_std, episodes=3, seed_offset=0):
+    """Evaluates policy online, recording reward and k-NN state manifold distance."""
     policy.eval()
-    all_episode_rewards = []
-    all_rollout_distances = []
+    rewards, knn_distances = [], []
 
-    for ep_idx in range(episodes):
-        obs, _ = env.reset(seed=config.SEED + seed_offset + ep_idx)
-        episode_reward = 0
-        episode_states = []
+    for ep in range(episodes):
+        obs, _ = env.reset(seed=config.SEED + seed_offset + ep)
+        ep_reward = 0.0
+        done = False
+        step = 0
 
-        while True:
-            # Clip state normalization to prevent extreme numeric spikes
-            obs_norm = np.clip((obs - obs_mean) / obs_std, -10.0, 10.0)
-            episode_states.append(obs_norm)
-
+        while not done and step < config.TRAJECTORY_LENGTH:
+            obs_norm = (obs - obs_mean) / obs_std
             obs_t = torch.tensor(obs_norm, dtype=torch.float32, device=config.DEVICE).unsqueeze(0)
 
             with torch.no_grad():
                 action = policy(obs_t).cpu().numpy()[0]
 
-            next_obs, reward, term, trunc, _ = env.step(action)
-            episode_reward += reward
-            obs = next_obs
+            # Compute k-NN manifold distance to expert states
+            distances, _ = nn_detector.kneighbors([obs_norm])
+            knn_distances.append(np.mean(distances))
 
-            if term or trunc:
-                break
+            obs, reward, term, trunc, _ = env.step(action)
+            ep_reward += reward
+            done = term or trunc
+            step += 1
 
-        all_episode_rewards.append(episode_reward)
+        rewards.append(ep_reward)
 
-        if len(episode_states) > 0:
-            episode_states_arr = np.nan_to_num(np.array(episode_states), nan=0.0, posinf=10.0, neginf=-10.0)
-            distances, _ = nn_detector.kneighbors(episode_states_arr)
-            all_rollout_distances.extend(distances.mean(axis=1))
-
-    return np.mean(all_episode_rewards), np.std(all_episode_rewards), np.mean(all_rollout_distances), np.std(all_rollout_distances)
-
-
-def collect_dagger_data(policy, expert, env, beta, obs_mean, obs_std, num_episodes=5, seed_offset=0):
-    """
-    Collects interactive rollout data for the DAgger loop.
-    Rolls out using a beta-blend of the expert and the trained policy,
-    but labels ALL states with the expert's true actions.
-
-    FIX 1: env.reset() now seeded, same rationale as collect_trajectories.
-    FIX 2: episodes are now capped at config.TRAJECTORY_LENGTH steps, matching the initial
-    expert-data collection. Previously this loop ran `while True` until the environment's own
-    term/trunc, uncapped -- for something like Humanoid-v5 that can be up to the env's internal
-    time limit (often much longer than TRAJECTORY_LENGTH). That let dataset growth per DAgger
-    iteration vary a lot with policy survival time, independent of anything meaningful about
-    policy quality, and made iterations inconsistent with each other in aggregated-data volume.
-    """
-    obs_b, act_b, n_obs_b, n_act_b = [], [], [], []
-    policy.eval()
-
-    for ep_idx in range(num_episodes):
-        obs, _ = env.reset(seed=config.SEED + seed_offset + ep_idx)
-        for _ in range(config.TRAJECTORY_LENGTH):
-            expert_action, _ = expert.predict(obs, deterministic=True)
-
-            if np.random.rand() < beta:
-                action_to_take = expert_action
-            else:
-                obs_t = torch.tensor((obs - obs_mean) / obs_std, dtype=torch.float32, device=config.DEVICE).unsqueeze(0)
-                with torch.no_grad():
-                    action_to_take = policy(obs_t).cpu().numpy()[0]
-
-            next_obs, _, term, trunc, _ = env.step(action_to_take)
-            expert_next_action, _ = expert.predict(next_obs, deterministic=True)
-
-            obs_b.append(obs)
-            act_b.append(expert_action)  # DAgger rule: always log what the expert *would* have done
-            n_obs_b.append(next_obs)
-            n_act_b.append(expert_next_action)
-
-            obs = next_obs
-            if term or trunc:
-                break
-
-    return np.array(obs_b), np.array(act_b), np.array(n_obs_b), np.array(n_act_b)
+    return (
+        float(np.mean(rewards)),
+        float(np.std(rewards)),
+        float(np.mean(knn_distances)),
+        float(np.std(knn_distances)),
+    )

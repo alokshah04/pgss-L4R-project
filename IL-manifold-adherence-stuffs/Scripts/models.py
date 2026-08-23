@@ -24,10 +24,8 @@ class BCPolicy(nn.Module):
         super().__init__()
         self.network = nn.Sequential(
             nn.Linear(obs_dim, 64),
-            nn.LayerNorm(64),
             nn.Tanh(),
             nn.Linear(64, 64),
-            nn.LayerNorm(64),
             nn.Tanh(),
             nn.Linear(64, action_dim),
         )
