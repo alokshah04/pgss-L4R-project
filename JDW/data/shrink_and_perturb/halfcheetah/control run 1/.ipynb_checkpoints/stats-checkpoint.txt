@@ -1,0 +1,9 @@
+control run 1
+
+Expert  avg return: 3029.4 +/- 31.5
+Learned avg return: 2448.4 +/- 857.8
+Normalised reward gap: 19.2%
+
+Expert avg return: 11481.7 +/- 69.8
+IL     avg return: 5643.9 +/- 4478.9
+PPO    avg return: 8599.0 +/- 3365.8

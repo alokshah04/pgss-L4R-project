@@ -1,0 +1,18 @@
+control run 1
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? False
+
+Final train loss: 0.002649
+Final val   loss: 0.003602
+Difference between train and val: -0.000954
+
+Expert  avg return: 2669.1 +/- 266.6
+Learned avg return: 2008.2 +/- 886.0
+Expert  median return: 2718.7
+Learned median return: 2686.2
+Normalised reward gap: 24.8%
+

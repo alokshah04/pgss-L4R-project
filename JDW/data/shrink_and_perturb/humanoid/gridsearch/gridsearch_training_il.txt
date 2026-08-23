@@ -1,0 +1,460 @@
+Training on: cpu
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [03:46<00:00,  2.21it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.99999
+Noise stddev:    0.0001
+Interval:        1
+
+Final train loss: 0.001623
+Final val   loss: 0.003451
+Difference between train and val: -0.001827
+Saved IL policy to il_policy_9.999900e-01_1.000000e-04_1.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [03:55<00:00,  2.12it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.99999
+Noise stddev:    0.0001
+Interval:        8
+
+Final train loss: 0.000826
+Final val   loss: 0.002849
+Difference between train and val: -0.002022
+Saved IL policy to il_policy_9.999900e-01_1.000000e-04_8.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [03:02<00:00,  2.74it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.99999
+Noise stddev:    0.0001
+Interval:        64
+
+Final train loss: 0.000781
+Final val   loss: 0.002786
+Difference between train and val: -0.002005
+Saved IL policy to il_policy_9.999900e-01_1.000000e-04_64.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [03:57<00:00,  2.11it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.99999
+Noise stddev:    1e-05
+Interval:        1
+
+Final train loss: 0.000895
+Final val   loss: 0.002613
+Difference between train and val: -0.001718
+Saved IL policy to il_policy_9.999900e-01_1.000000e-05_1.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [03:13<00:00,  2.58it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.99999
+Noise stddev:    1e-05
+Interval:        8
+
+Final train loss: 0.000770
+Final val   loss: 0.002770
+Difference between train and val: -0.002000
+Saved IL policy to il_policy_9.999900e-01_1.000000e-05_8.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [03:10<00:00,  2.62it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.99999
+Noise stddev:    1e-05
+Interval:        64
+
+Final train loss: 0.000756
+Final val   loss: 0.002808
+Difference between train and val: -0.002052
+Saved IL policy to il_policy_9.999900e-01_1.000000e-05_64.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [04:01<00:00,  2.07it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.99999
+Noise stddev:    1e-06
+Interval:        1
+
+Final train loss: 0.000879
+Final val   loss: 0.002659
+Difference between train and val: -0.001779
+Saved IL policy to il_policy_9.999900e-01_1.000000e-06_1.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [03:18<00:00,  2.52it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.99999
+Noise stddev:    1e-06
+Interval:        8
+
+Final train loss: 0.000755
+Final val   loss: 0.002713
+Difference between train and val: -0.001958
+Saved IL policy to il_policy_9.999900e-01_1.000000e-06_8.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [03:10<00:00,  2.62it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.99999
+Noise stddev:    1e-06
+Interval:        64
+
+Final train loss: 0.000746
+Final val   loss: 0.002777
+Difference between train and val: -0.002031
+Saved IL policy to il_policy_9.999900e-01_1.000000e-06_64.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [04:29<00:00,  1.86it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.999995
+Noise stddev:    0.0001
+Interval:        1
+
+Final train loss: 0.001591
+Final val   loss: 0.003483
+Difference between train and val: -0.001892
+Saved IL policy to il_policy_9.999950e-01_1.000000e-04_1.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [06:12<00:00,  1.34it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.999995
+Noise stddev:    0.0001
+Interval:        8
+
+Final train loss: 0.000858
+Final val   loss: 0.002969
+Difference between train and val: -0.002111
+Saved IL policy to il_policy_9.999950e-01_1.000000e-04_8.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [02:57<00:00,  2.82it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.999995
+Noise stddev:    0.0001
+Interval:        64
+
+Final train loss: 0.000742
+Final val   loss: 0.002774
+Difference between train and val: -0.002032
+Saved IL policy to il_policy_9.999950e-01_1.000000e-04_64.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [03:54<00:00,  2.13it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.999995
+Noise stddev:    1e-05
+Interval:        1
+
+Final train loss: 0.000806
+Final val   loss: 0.002668
+Difference between train and val: -0.001862
+Saved IL policy to il_policy_9.999950e-01_1.000000e-05_1.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [03:14<00:00,  2.57it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.999995
+Noise stddev:    1e-05
+Interval:        8
+
+Final train loss: 0.000760
+Final val   loss: 0.002842
+Difference between train and val: -0.002082
+Saved IL policy to il_policy_9.999950e-01_1.000000e-05_8.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [03:04<00:00,  2.70it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.999995
+Noise stddev:    1e-05
+Interval:        64
+
+Final train loss: 0.000734
+Final val   loss: 0.002827
+Difference between train and val: -0.002093
+Saved IL policy to il_policy_9.999950e-01_1.000000e-05_64.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [04:01<00:00,  2.07it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.999995
+Noise stddev:    1e-06
+Interval:        1
+
+Final train loss: 0.000812
+Final val   loss: 0.002722
+Difference between train and val: -0.001910
+Saved IL policy to il_policy_9.999950e-01_1.000000e-06_1.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [03:13<00:00,  2.58it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.999995
+Noise stddev:    1e-06
+Interval:        8
+
+Final train loss: 0.000755
+Final val   loss: 0.002851
+Difference between train and val: -0.002096
+Saved IL policy to il_policy_9.999950e-01_1.000000e-06_8.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [19:45<00:00,  2.37s/it]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.999995
+Noise stddev:    1e-06
+Interval:        64
+
+Final train loss: 0.000765
+Final val   loss: 0.002762
+Difference between train and val: -0.001997
+Saved IL policy to il_policy_9.999950e-01_1.000000e-06_64.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [03:49<00:00,  2.18it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.999999
+Noise stddev:    0.0001
+Interval:        1
+
+Final train loss: 0.001531
+Final val   loss: 0.003623
+Difference between train and val: -0.002092
+Saved IL policy to il_policy_9.999990e-01_1.000000e-04_1.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [03:13<00:00,  2.59it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.999999
+Noise stddev:    0.0001
+Interval:        8
+
+Final train loss: 0.000846
+Final val   loss: 0.002914
+Difference between train and val: -0.002067
+Saved IL policy to il_policy_9.999990e-01_1.000000e-04_8.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [03:00<00:00,  2.77it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.999999
+Noise stddev:    0.0001
+Interval:        64
+
+Final train loss: 0.000758
+Final val   loss: 0.002864
+Difference between train and val: -0.002106
+Saved IL policy to il_policy_9.999990e-01_1.000000e-04_64.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [03:54<00:00,  2.13it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.999999
+Noise stddev:    1e-05
+Interval:        1
+
+Final train loss: 0.000787
+Final val   loss: 0.002814
+Difference between train and val: -0.002027
+Saved IL policy to il_policy_9.999990e-01_1.000000e-05_1.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [03:15<00:00,  2.56it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.999999
+Noise stddev:    1e-05
+Interval:        8
+
+Final train loss: 0.000757
+Final val   loss: 0.002809
+Difference between train and val: -0.002052
+Saved IL policy to il_policy_9.999990e-01_1.000000e-05_8.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [03:16<00:00,  2.54it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.999999
+Noise stddev:    1e-05
+Interval:        64
+
+Final train loss: 0.000758
+Final val   loss: 0.002870
+Difference between train and val: -0.002112
+Saved IL policy to il_policy_9.999990e-01_1.000000e-05_64.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [09:50<00:00,  1.18s/it]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.999999
+Noise stddev:    1e-06
+Interval:        1
+
+Final train loss: 0.000724
+Final val   loss: 0.002736
+Difference between train and val: -0.002012
+Saved IL policy to il_policy_9.999990e-01_1.000000e-06_1.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [22:07<00:00,  2.66s/it]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.999999
+Noise stddev:    1e-06
+Interval:        8
+
+Final train loss: 0.000746
+Final val   loss: 0.002794
+Difference between train and val: -0.002048
+Saved IL policy to il_policy_9.999990e-01_1.000000e-06_8.pt
+Reinitializing model, optimizer, schedule, criterion, loss records...
+
+Training: 100%|██████████████████████████████████████████████████████████████████████| 500/500 [03:02<00:00,  2.74it/s]
+
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.999999
+Noise stddev:    1e-06
+Interval:        64
+
+Final train loss: 0.000740
+Final val   loss: 0.002744
+Difference between train and val: -0.002004
+Saved IL policy to il_policy_9.999990e-01_1.000000e-06_64.pt

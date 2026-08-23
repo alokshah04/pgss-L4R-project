@@ -1,0 +1,23 @@
+Run configuration:
+Epochs:        500
+Learning rate: 1.000000e-03
+Seed:          2344
+Shrink and perturb? True
+Parameter scale: 0.99999
+Noise stddev:    1e-05
+Interval:        1
+
+Final train loss: 0.007510
+Final val   loss: 0.009946
+Difference between train and val: -0.002435
+
+Expert  avg return: 3009.9 +/- 38.4
+Learned avg return: 2129.4 +/- 939.6
+Expert  median return: 3010.7
+Learned median return: 2493.0
+Normalised reward gap: 29.3%
+
+Expert avg return: 11487.8 +/- 95.7
+IL     avg return: 5475.5 +/- 2847.9
+PPO    avg return: 9955.2 +/- 1684.7
+
