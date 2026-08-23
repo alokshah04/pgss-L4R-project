@@ -1,2 +1,0 @@
-2026-07-18 15:10:04,177 INFO    MainThread:11760 [wandb_init.py:setup_run_log_directory():729] Logging user logs to C:\Users\jakew\OneDrive\Safekeeping\Documents\School\PGSS\Robotics\test\wandb\run-20260718_151004-cx9w25ci\logs\debug.log
-2026-07-18 15:10:04,178 INFO    MainThread:11760 [wandb_init.py:setup_run_log_directory():730] Logging internal logs to C:\Users\jakew\OneDrive\Safekeeping\Documents\School\PGSS\Robotics\test\wandb\run-20260718_151004-cx9w25ci\logs\debug-internal.log

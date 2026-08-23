@@ -1,6 +1,0 @@
-Training on: cpu
-Loaded IL weights into PPO actor (from in-memory model).
-[sanity] loaded-actor deterministic return/env (normalized-reward scale): 28.8
-PPO training: 100%|█████████████████████████████████████████████| 61/61 [09:27<00:00,  9.30s/it, steps=0.50M, ret=5901]
-
-Training complete in 9.5 min. Saved ppo_halfcheetah.pt
