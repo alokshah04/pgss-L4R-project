@@ -38,7 +38,7 @@ def plot_research_metrics(stats_history, mode):
     plt.grid(True, linestyle='--', alpha=0.6)
     plt.legend()
 
-    # 2. Manifold Energy Plot with Variance Shadows
+    # 2. Manifold Energy Plot (ECE)
     plt.subplot(1, 3, 2)
     mean_energy = np.array(stats_history['energy_mean'])
     std_energy = np.array(stats_history['energy_std'])
@@ -50,7 +50,7 @@ def plot_research_metrics(stats_history, mode):
     plt.grid(True, linestyle='--', alpha=0.6)
     plt.legend()
 
-    # 3. KNN Distance Plot with Variance Shadows
+    # 3. KNN Distance Plot
     plt.subplot(1, 3, 3)
     mean_knn = np.array(stats_history['knn_mean'])
     std_knn = np.array(stats_history['knn_std'])
@@ -71,7 +71,6 @@ def plot_research_metrics(stats_history, mode):
 def train_energy_critic(obs_raw, acts_raw, obs_mean, obs_std, act_mean, act_std,
                          epochs=None, critic=None, use_cache=True,
                          cache_path="energy_critic_expert_cache.pt"):
-    """Loads a cached expert manifold critic if available, otherwise pre-trains and saves it."""
     if epochs is None:
         epochs = config.CRITIC_PRETRAIN_EPOCHS
 
@@ -129,7 +128,6 @@ def train_energy_critic(obs_raw, acts_raw, obs_mean, obs_std, act_mean, act_std,
 
 
 def pretrain_lyapunov_network(lyapunov_net, obs_raw, acts_raw, obs_mean, obs_std, act_mean, act_std, epochs=30):
-    """Pre-trains Lyapunov Safety Critic on expert trajectories with contrastive margin loss."""
     print("\n[INFO] Pre-training Lyapunov Safety Network...")
     obs_norm = (obs_raw - obs_mean) / obs_std
     acts_norm = (acts_raw - act_mean) / act_std
@@ -178,7 +176,6 @@ best_composite_score = -float("inf")
 
 def train_bc_modular(policy, lyapunov_net, energy_critic, nn_detector, train_data, val_loader,
                       scalar_maps, env, stats_history, epochs=None, eval_seed_offset=0):
-    """Optimized block tracking true losses, silencing loss prints until completion, and tracking standard deviations."""
     if epochs is None:
         epochs = config.BC_TRAIN_EPOCHS
 
@@ -220,13 +217,11 @@ def train_bc_modular(policy, lyapunov_net, energy_critic, nn_detector, train_dat
             o_t, a_t = o_t.to(config.DEVICE), a_t.to(config.DEVICE)
             o_next, a_next = o_next.to(config.DEVICE), a_next.to(config.DEVICE)
 
-            # ====================================================================
-            # 1. Update Lyapunov Critic Network (V_phi)
-            # ====================================================================
+            # Update lyapunov network
             if use_lyapunov:
                 lyap_optimizer.zero_grad()
 
-                # A. Temporal Dissipation Loss: V(s_{t+1}, a_{t+1}) <= (1 - alpha) * V(s_t, a_t)
+                # A. Temporal Dissipation Loss
                 v_curr = lyapunov_net(o_t, a_t)
                 v_next = lyapunov_net(o_next, a_next)
                 dissipation_violation = F.relu(v_next - (1.0 - config.LYAPUNOV_ALPHA_DECAY) * v_curr)
@@ -239,15 +234,13 @@ def train_bc_modular(policy, lyapunov_net, energy_critic, nn_detector, train_dat
                 margin_violation = F.relu(config.LYAPUNOV_MARGIN - v_ood)
                 loss_margin = torch.mean(torch.square(margin_violation))
 
-                # Total Critic Loss
+                # C. Total Critic Loss
                 loss_lyap_critic = loss_dissipation + config.LYAPUNOV_CONTRASTIVE_WEIGHT * loss_margin
                 loss_lyap_critic.backward()
                 torch.nn.utils.clip_grad_norm_(lyapunov_net.parameters(), max_norm=config.CRITIC_GRAD_CLIP)
                 lyap_optimizer.step()
 
-            # ====================================================================
-            # 2. Update Policy Network (pi_theta)
-            # ====================================================================
+            # Update policy network
             optimizer.zero_grad()
 
             pred_t = policy(o_t)
@@ -260,7 +253,6 @@ def train_bc_modular(policy, lyapunov_net, energy_critic, nn_detector, train_dat
 
             loss_lyap_reg = 0.0
             if use_lyapunov:
-                # Lookahead Lyapunov Regularization on Predicted Next State Action
                 pred_next_for_v = policy(o_next)
                 v_next_pred = lyapunov_net(o_next, pred_next_for_v)
                 loss_lyap_reg = config.LYAPUNOV_LOSS_WEIGHT * torch.mean(v_next_pred)
@@ -272,7 +264,6 @@ def train_bc_modular(policy, lyapunov_net, energy_critic, nn_detector, train_dat
 
             epoch_train_losses.append(loss_bc.item())
 
-        # --- VALIDATION/LOSS EXTRACTION PHASE ---
         policy.eval()
         epoch_val_losses = []
         epoch_energies = []
@@ -292,7 +283,7 @@ def train_bc_modular(policy, lyapunov_net, energy_critic, nn_detector, train_dat
                 energies = energy_critic(o_val, pred_norm).cpu().numpy().flatten()
                 epoch_energies.extend(energies)
 
-        # --- LIVE ENVIRONMENT EVALUATION ---
+        # Live Evaluation
         reward_mean, reward_std, knn_mean, knn_std = utils.evaluate_policy_with_manifold_tracking(
             policy, env, nn_detector, obs_mean, obs_std,
             episodes=config.MID_TRAIN_EVAL_EPISODES,
@@ -386,12 +377,11 @@ if __name__ == "__main__":
     val_nobs_norm = (vno_raw - obs_mean) / obs_std
     val_loader = DataLoader(BCSequentialData(val_obs_norm, va_raw, val_nobs_norm, vna_raw), batch_size=config.POLICY_BATCH_SIZE, shuffle=False)
 
-    # Initialize Networks
+    # Initialize all networks
     energy_critic = train_energy_critic(o_raw, a_raw, obs_mean, obs_std, act_mean, act_std, epochs=config.CRITIC_PRETRAIN_EPOCHS)
     lyapunov_net = LyapunovNetwork(o_raw.shape[1], a_raw.shape[1]).to(config.DEVICE)
     policy = BCPolicy(o_raw.shape[1], a_raw.shape[1]).to(config.DEVICE)
 
-    # Pre-train Lyapunov Network if Lyapunov mode is selected
     use_lyapunov_mode = config.TRAINING_MODE in ["LYAPUNOV_DAGGER", "LYAPUNOV_DAGGER_TWO_STEP", "LYAPUNOV_ONLY"]
     if use_lyapunov_mode:
         lyapunov_net = pretrain_lyapunov_network(

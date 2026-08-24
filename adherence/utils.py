@@ -71,7 +71,6 @@ def collect_dagger_data(policy, expert, env, beta, obs_mean, obs_std, num_episod
         step = 0
 
         while not done and step < config.TRAJECTORY_LENGTH:
-            # Predict action from policy
             obs_norm = (obs - obs_mean) / obs_std
             obs_t = torch.tensor(obs_norm, dtype=torch.float32, device=config.DEVICE).unsqueeze(0)
             with torch.no_grad():
@@ -79,7 +78,6 @@ def collect_dagger_data(policy, expert, env, beta, obs_mean, obs_std, num_episod
 
             expert_act, _ = expert.predict(obs, deterministic=True)
 
-            # Beta probability of taking expert action in env
             if np.random.rand() < beta:
                 env_act = expert_act
             else:
@@ -90,7 +88,6 @@ def collect_dagger_data(policy, expert, env, beta, obs_mean, obs_std, num_episod
 
             expert_next_act, _ = expert.predict(next_obs, deterministic=True)
 
-            # Store transition labeled with EXPERT action for dagger aggregation
             obs_list.append(obs)
             act_list.append(expert_act)
             next_obs_list.append(next_obs)
@@ -108,7 +105,6 @@ def collect_dagger_data(policy, expert, env, beta, obs_mean, obs_std, num_episod
 
 
 def evaluate_policy_with_manifold_tracking(policy, env, nn_detector, obs_mean, obs_std, episodes=3, seed_offset=0):
-    """Evaluates policy online, recording reward and k-NN state manifold distance."""
     policy.eval()
     rewards, knn_distances = [], []
 
@@ -125,7 +121,6 @@ def evaluate_policy_with_manifold_tracking(policy, env, nn_detector, obs_mean, o
             with torch.no_grad():
                 action = policy(obs_t).cpu().numpy()[0]
 
-            # Compute k-NN manifold distance to expert states
             distances, _ = nn_detector.kneighbors([obs_norm])
             knn_distances.append(np.mean(distances))
 

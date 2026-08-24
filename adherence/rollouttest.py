@@ -47,9 +47,9 @@ def main():
 
     env = gym.make(env_id)
 
-    print("==================================================")
+    print("============================================")
     print(f" Loading Policy Checkpoint & Statistics...")
-    print("==================================================")
+    print("============================================")
 
     checkpoint_data = torch.load(args.policy_path, map_location=device)
 
