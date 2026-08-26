@@ -11,5 +11,3 @@ Project Advisors: Alok Shah, Justin Wang
 \
 The *_old* folder contains unused and outdated scripts/files that were previously used
 during research, but are no longer necessary to reproduce the results shown in the paper.
-
-Link to paper: [TBD]
